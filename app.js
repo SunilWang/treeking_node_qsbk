@@ -1,3 +1,16 @@
+//======================================================================
+//
+//        Copyright (C) 2014-2015 ahwangshu.com
+//        All rights reserved
+//
+//        filename :app.js
+//        description :配置中间件和路由等
+//
+//        created by 王澍 at  2015年1月8日13:33:36
+//        email:ahwangshu@qq.com
+//        http://qsbk.ahwangshu.com
+//
+//======================================================================
 var express = require('express');
 var path = require('path');
 var favicon = require('serve-favicon');
@@ -5,7 +18,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var log4js = require('log4js');
-
+//配置log4js
 log4js.configure({
     appenders: [
         {
@@ -57,8 +70,8 @@ app.set('view engine', 'html');
 // uncomment after placing your favicon in /public
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
-//app.use(log4js.connectLogger(log4js.getLogger("logFileInfo"), {level: log4js.levels.DEBUG, format: ':remote-addr :method :url :status'}));
-app.use(log4js.connectLogger(log4js.getLogger("logFileInfo"), {level: log4js.levels.DEBUG}));
+//app.use(log4js.connectLogger(log4js.getLogger("logFileInfo"), {level: log4js.levels.DEBUG, format: ':remote-addr :method :url :status'}));//日志带有格式format的日志输出
+app.use(log4js.connectLogger(log4js.getLogger("logFileInfo"), {level: log4js.levels.DEBUG}));//格式是默认日志的输出
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());

@@ -1,5 +1,17 @@
 #!/usr/bin/env node
-
+//======================================================================
+//
+//        Copyright (C) 2014-2015 ahwangshu.com
+//        All rights reserved
+//
+//        filename :www
+//        description :这是启动node服务入口=》dos命令：node www
+//
+//        created by 王澍 at  2015年1月8日13:33:36
+//        email:ahwangshu@qq.com
+//        http://qsbk.ahwangshu.com
+//
+//======================================================================
 /**
  * Module dependencies.
  */
@@ -7,7 +19,8 @@
 var app = require('../app');
 var debug = require('debug')('qsbk:server');
 var http = require('http');
-var log4js = require('../app').logger('logFileInfo');
+//var log4js = require('./../app').logger();
+var log4js = require('log4js');
 /**
  *
  * Get port from environment and store in Express.
@@ -60,6 +73,6 @@ function onError(error) {
 
 function onListening() {
     debug('Listening on port ' + server.address().port);
-    log4js.info('Express server listening on port ' + app.get('port'));
+    log4js.getLogger('logFileInfo').info('Express server listening on port ' + app.get('port'));
     console.log('Express server listening on port ' + app.get('port'));
 }
