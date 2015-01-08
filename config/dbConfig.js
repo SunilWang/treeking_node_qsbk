@@ -19,8 +19,8 @@ module.exports = {
     //mongodb数据库配置
     dbConfig: {
         //dbName: 'qsbknode',
-        dbName:'testdb',
-        dbPath: '127.0.0.1',
-        dbPort: 27017
+        dbName:'testdb', //数据库的名字
+        dbPath: '127.0.0.1', //数据库的连接地址
+        dbPort: 27017 //数据库的端口号
     }
 };

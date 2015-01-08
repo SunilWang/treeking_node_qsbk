@@ -20,13 +20,15 @@ var mongodb = require('../util/mongoJoin').db;
 router.get('/', function(req, res) {
 
       var news = mongodb.collection('news');
-      news.insert({
+     /* news.insert({
               "title" : "新闻标题7",
               "contert" : "这是新闻内容",
               "pulisher" : "发布者",
-              "publishTime" : "2015年1月8日16:54:28"
+              "publishTime" : new Date().toLocaleString()
+      });*/
+      news.count(function(err,count){
+          console.log(count);
       });
-      //console.log(news.count({}));
 
     res.render('index', { title: 'Express' });
 });

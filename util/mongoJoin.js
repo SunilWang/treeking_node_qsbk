@@ -24,7 +24,7 @@ var globalDb = new Db(dbConfig.dbName, new Server(dbConfig.dbPath, dbConfig.dbPo
 //全局打开一个连接
 globalDb.open(function (err) {
     if (err) {
-        log4js.error(err.status);
+        log4js.error(err.stack);
         throw err;
     }
 });

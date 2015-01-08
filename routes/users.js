@@ -19,4 +19,9 @@ router.get('/', function(req, res) {
   res.send('respond with a resource');
 });
 
+/* GET users listing. */
+router.get('/add', function(req, res) {
+    res.send('user add');
+});
+
 module.exports = router;
