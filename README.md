@@ -5,8 +5,6 @@
 来至：https://github.com/KingTree/treeking_node_qsbk
 
 
-<<<<<<< HEAD
+
 如有意见请联系：ahwangshu@qq.com
-=======
-如有意见请联系：ahwangshu@qq.com
->>>>>>> origin/master
+
