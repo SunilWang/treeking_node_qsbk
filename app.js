@@ -12,12 +12,14 @@
 //
 //======================================================================
 var express = require('express');
+var app = express();
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var log4js = require('log4js');
+
 //配置log4js
 log4js.configure({
     appenders: [
@@ -43,8 +45,8 @@ log4js.configure({
             category: 'dateFileAppender',
             type: 'dateFile',
             filename: 'logs/dateFileLog.log',
-            pattern: '-yyyy-MM-dd',
-            alwayIncludePattern: false
+            pattern: '-yyyy-MM-dd',//生成的文件带有日期比如：dateFileLog-2015-1-8.log
+            alwayIncludePattern: true//是否总是包含pattern
         }
     ],
     replaceConsole: true//替换控制台
@@ -60,7 +62,6 @@ exports.logger = function (categoryName) {
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
-var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -87,12 +88,19 @@ app.use(function(req, res, next) {
     next(err);
 });
 
+//node 未能捕获到的异常，比如异常退出等等
+process.on('uncaughtException', function (err) {
+    log4js.getLogger('fileAppenderError').error('未处理的异常：' + err.stack);
+});
+
 // error handlers
 
 // development error handler
 // will print stacktrace
+//开发模式进入该if
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
+        log4js.getLogger('fileAppenderError').error(err.stack);
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -103,13 +111,16 @@ if (app.get('env') === 'development') {
 
 // production error handler
 // no stacktraces leaked to user
+//非开发模式进入该if
 app.use(function(err, req, res, next) {
+    log4js.getLogger('fileAppenderError').error(err.stack);
     res.status(err.status || 500);
     res.render('error', {
         message: err.message,
         error: {}
     });
 });
+
 
 
 module.exports = app;

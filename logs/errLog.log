@@ -1,0 +1,41 @@
+[2015-01-08 15:23:02.558] [ERROR] fileAppenderError - 未处理的异常：TypeError: Expecting a function in instanceof check, but got #<Db>
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\routes\index.js:24:33
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\db.js:296:11
+    at process._tickCallback (node.js:419:13)
+[2015-01-08 15:25:30.721] [ERROR] fileAppenderError - 未处理的异常：TypeError: Expecting a function in instanceof check, but got #<Db>
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\routes\index.js:27:33
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\db.js:296:11
+    at process._tickCallback (node.js:419:13)
+[2015-01-08 15:34:16.448] [ERROR] fileAppenderError - 未处理的异常：TypeError: undefined is not a function
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\collection\commands.js:55:5
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\db.js:1174:7
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\db.js:1882:9
+    at Server.Base._callHandler (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\base.js:453:41)
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\server.js:487:18
+    at MongoReply.parseBody (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\responses\mongo_reply.js:68:5)
+    at null.<anonymous> (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\server.js:445:20)
+    at emit (events.js:95:17)
+    at null.<anonymous> (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:201:13)
+    at emit (events.js:98:17)
+[2015-01-08 15:34:58.748] [ERROR] fileAppenderError - 未处理的异常：TypeError: undefined is not a function
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\collection\commands.js:55:5
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\db.js:1174:7
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\db.js:1882:9
+    at Server.Base._callHandler (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\base.js:453:41)
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\server.js:487:18
+    at MongoReply.parseBody (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\responses\mongo_reply.js:68:5)
+    at null.<anonymous> (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\server.js:445:20)
+    at emit (events.js:95:17)
+    at null.<anonymous> (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:201:13)
+    at emit (events.js:98:17)
+[2015-01-08 15:38:17.933] [ERROR] fileAppenderError - 未处理的异常：TypeError: object is not a function
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\collection\commands.js:55:5
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\db.js:1174:7
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\db.js:1882:9
+    at Server.Base._callHandler (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\base.js:453:41)
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\server.js:487:18
+    at MongoReply.parseBody (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\responses\mongo_reply.js:68:5)
+    at null.<anonymous> (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\server.js:445:20)
+    at emit (events.js:95:17)
+    at null.<anonymous> (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\mongodb\lib\mongodb\connection\connection_pool.js:201:13)
+    at emit (events.js:98:17)

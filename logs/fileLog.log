@@ -1,1 +1,33 @@
-[2015-01-08 13:59:10.117] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 14:47:18.967] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 14:53:14.294] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 15:22:58.755] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 15:23:02.535] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:23:02.642] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:25:29.509] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 15:25:30.690] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:25:30.707] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:29:46.490] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 15:29:47.607] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:29:47.657] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:34:08.311] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 15:34:16.412] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:34:16.456] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:34:57.697] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 15:34:58.717] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:34:58.757] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:37:24.411] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 15:37:27.178] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:37:27.226] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:38:15.981] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 15:38:17.863] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 15:38:17.927] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 16:54:14.300] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 16:54:31.867] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 16:54:38.729] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 16:54:38.785] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 16:55:11.188] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 16:55:40.191] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 16:55:40.292] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 16:57:29.926] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 16:57:34.899] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 16:57:34.918] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
