@@ -1,0 +1,15 @@
+[2015-01-08 10:59:56.956] [INFO] fileAppender - Express server listening on port 3000
+[2015-01-08 11:00:07.340] [DEBUG] fileAppender - 127.0.0.1 GET /users 304
+[2015-01-08 11:01:59.054] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 11:02:53.663] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 11:02:59.341] [DEBUG] logFileInfo - 127.0.0.1 GET /users 304
+[2015-01-08 11:05:04.874] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 11:05:09.079] [DEBUG] logFileInfo - 127.0.0.1 GET /users 304
+[2015-01-08 11:05:09.302] [DEBUG] logFileInfo - 127.0.0.1 GET /users 304
+[2015-01-08 11:05:09.524] [DEBUG] logFileInfo - 127.0.0.1 GET /users 304
+[2015-01-08 11:05:28.297] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 11:07:46.887] [DEBUG] logFileInfo - 127.0.0.1 GET /userss 404
+[2015-01-08 11:08:54.081] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-08 11:08:59.380] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /userss HTTP/1.1" 404 1123 "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 11:09:00.005] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /userss HTTP/1.1" 404 1123 "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-08 11:12:22.772] [INFO] logFileInfo - Express server listening on port 3000
