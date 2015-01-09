@@ -1,3 +1,38 @@
-[2015-01-08 17:51:58.793] [INFO] logFileInfo - Express server listening on port 3000
-[2015-01-08 17:52:03.383] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
-[2015-01-08 17:52:08.840] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/add HTTP/1.1" 200 8 "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 14:44:18.255] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 14:55:00.484] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 14:55:09.509] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 14:55:09.519] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 14:55:13.872] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 14:55:17.165] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/list HTTP/1.1" 200 8 "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 14:56:05.745] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 14:56:35.001] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/list HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 14:56:38.356] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 14:56:59.120] [WARN] logFileInfo - IP：127.0.0.1,非法请求后台！
+[2015-01-09 14:56:59.125] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/list HTTP/1.1" 302 58 "" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
+[2015-01-09 14:56:59.632] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
+[2015-01-09 14:56:59.691] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
+[2015-01-09 14:57:00.990] [WARN] logFileInfo - Error: Not Found
+    at app.use.res.render.message (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\app.js:101:15)
+    at Layer.handle [as handle_request] (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\layer.js:82:5)
+    at trim_prefix (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:271:13)
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:238:9
+    at Function.proto.process_params (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:313:12)
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:229:12
+    at Function.match_layer (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:296:3)
+    at next (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:190:10)
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:192:16
+    at Function.match_layer (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:296:3)
+[2015-01-09 14:57:00.997] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /favicon.ico HTTP/1.1" 200 4111 "" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
+[2015-01-09 14:57:00.999] [WARN] logFileInfo - Error: Not Found
+    at app.use.res.render.message (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\app.js:101:15)
+    at Layer.handle [as handle_request] (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\layer.js:82:5)
+    at trim_prefix (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:271:13)
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:238:9
+    at Function.proto.process_params (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:313:12)
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:229:12
+    at Function.match_layer (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:296:3)
+    at next (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:190:10)
+    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:192:16
+    at Function.match_layer (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:296:3)
+[2015-01-09 14:57:01.002] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /favicon.ico HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
+[2015-01-09 14:57:03.051] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/list HTTP/1.1" 200 8 "" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
