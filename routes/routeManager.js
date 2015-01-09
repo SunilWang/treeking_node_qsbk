@@ -14,12 +14,15 @@
 //        http://qsbk.ahwangshu.com
 //
 //======================================================================
+var users = require('../controller/users');
+var index = require('../controller/index');
 expect.routeManager = function(app){
 
-    //注册首页路由信息
-    routeIndex(app);
-    //注册用户路由信息
-    routeUser(app);
+    //网站主页注册信息
+    routeUser('/',index);
+    //用户路由注册信息
+    app.use('/user',users);
+
 
 }
 

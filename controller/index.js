@@ -18,6 +18,7 @@ var log4js = require('./../app').logger();
 var mongodb = require('../util/mongoJoin').db;
 /* GET home page. */
 router.get('/', function(req, res) {
+      req.session.user={name:'wangshu',pass:'admin1234'};
 
       var news = mongodb.collection('news');
      /* news.insert({

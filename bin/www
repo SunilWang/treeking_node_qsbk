@@ -21,12 +21,13 @@ var debug = require('debug')('qsbk:server');
 var http = require('http');
 //var log4js = require('./../app').logger();
 var log4js = require('log4js');
+var appConfig = require('../config/config').appConfig;
 /**
  *
  * Get port from environment and store in Express.
  */
 
-var port = parseInt(process.env.PORT, 10) || 3000;
+var port = parseInt(process.env.PORT, 10) || appConfig.port;
 app.set('port', port);
 
 /**

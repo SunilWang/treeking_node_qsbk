@@ -17,8 +17,12 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session    = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+var flash = require('connect-flash');
 var bodyParser = require('body-parser');
 var log4js = require('log4js');
+var config = require('./config/config');
 
 //配置log4js
 log4js.configure({
@@ -31,14 +35,14 @@ log4js.configure({
             category: 'logFileInfo',
             type: 'file',
             filename: 'logs/fileLog.log',
-            maxLogSize: 102400,
+            maxLogSize: 3145728,
             backups: 4
         },
         {
             category: 'fileAppenderError',
             type: 'file',
             filename: 'logs/errLog.log',
-            maxLogSize: 102400,
+            maxLogSize: 3145728,
             backups: 4
         },
         {
@@ -56,13 +60,6 @@ log4js.configure({
 exports.logger = function (categoryName) {
     return log4js.getLogger(categoryName || 'logFileInfo');
 };
-
-
-
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var test = require('./test/testDb');
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -77,6 +74,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(flash());
+
+//提供session支持
+app.use(session({
+    secret: config.sessionConfig.sessionSecret,
+    store: new MongoStore({
+        db: config.dbConfig.dbName
+    }),
+    saveUninitialized: false,
+    resave: true
+}));
+
+
+var routes = require('./controller/index');
+var users = require('./controller/users');
+var test = require('./test/testDb');
+
 
 //app.use('/', routes);
 app.use('/', test);
@@ -86,7 +100,12 @@ app.use('/users', users);
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
-    next(err);
+    log4js.getLogger('logFileInfo').warn(err.stack);
+    res.render('404', {
+        url: config._404page.url,
+        email:config._404page.email
+    });
+    //next(err);
 });
 
 //node 未能捕获到的异常，比如异常退出等等

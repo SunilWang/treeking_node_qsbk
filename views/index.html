@@ -6,6 +6,12 @@
   </head>
   <body>
     <h1><%= title %></h1>
+    <% if(title){%>
     <p>Welcome to <%= title %></p>
+    <%}%>
+    <% if(userName){%>
+    <p>用户名为：<%=userName%></p>
+    <%}%>
+
   </body>
 </html>

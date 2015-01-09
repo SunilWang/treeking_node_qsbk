@@ -18,7 +18,7 @@ var mongodb = require('mongodb');
 var log4js = require('./../app').logger('fileAppenderError');
 var Db = mongodb.Db;
 var Server = mongodb.Server;
-var dbConfig = require('../config/dbConfig').dbConfig;
+var dbConfig = require('../config/config').dbConfig;
 var globalDb = new Db(dbConfig.dbName, new Server(dbConfig.dbPath, dbConfig.dbPort), {auto_reconnect: true});
 
 //全局打开一个连接
