@@ -21,7 +21,7 @@ var mongodb = require('../util/mongoJoin').db;
 /* GET home page. */
 router.get('/', function(req, res) {
     req.session.user={name:'wangshu',pass:'admin1234'};
-    var news = mongodb.collection('news');
+    //var news = mongodb.collection('news');
     /*news.insert({
      "title" : "新闻标题8",
      "contert" : "这是新闻内容",
@@ -31,16 +31,22 @@ router.get('/', function(req, res) {
     /*news.count(function(err,count){
         console.log(count);
     });*/
-    news.find({publishTime : { "$gte": new Date('2015-01-09'),"$lt":new Date('2015-01-11')}},function(err,data){
+   /* news.find({publishTime : { "$gte": new Date('2015-01-09'),"$lt":new Date('2015-01-11')}},function(err,data){
        // console.log(data);
 
         data.each(function(err,doc){
-            /*console.log(doc._id);
-            console.log(doc.title);*/
+            *//*console.log(doc._id);
+            console.log(doc.title);*//*
+            console.log(doc);
+        });
+    */
+    var sexInfo = mongodb.collection('sexInfo');
+    sexInfo.find({},function(err,data){
+        data.each(function(err,doc){
+            //*console.log(doc._id);
             console.log(doc);
         });
     });
-
     res.render('index', { title: 'Express',userName:'haha' });
 });
 

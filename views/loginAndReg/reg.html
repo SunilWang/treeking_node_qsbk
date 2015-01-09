@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+    <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
+</head>
+<body class="logBg">
+<div class="top">
+    <div class="wrap clearfix">
+        <a href="#" class="more">登陆</a>
+        <h1>糗事百科</h1>
+    </div>
+</div>
+<div class="wrap regBox-bg">
+    <div class="regBox">
+        <div class="passTit2">
+            <img width="107" height="25" src="/images/hyzc.jpg" />
+        </div>
+        <div class="pass-reg">
+            <p class="pass-info">请如实输入注册信息，我们将为您完成注册。</p>
+            <form id="regForm" method="post">
+                <div class="pass-reg-box">
+                    <p><em><i>*</i>登陆姓名:</em><input type="text" id="accountName" name="accountName" value="" class="iUser inputBg1" /><i id="vName" class="zc_yzr marl5"></i><span id="mName"></span><span id="mpwd2">用户名长度为3至32个字符</span></p>
+                    <p><em><i>*</i>昵称:</em><input type="text" id="" name="" value="" class="iUser inputBg1" /><i id="vName" class="zc_yzr marl5"></i><span id="mName"></span><span id="mpwd2">用户名长度为3至32个字符</span></p>
+                    <p><em><i>*</i>密码:</em><input type="password" id="pwd1" name="accountPassword" value="" class="iUser inputBg2" /><span id="mpwd1">密码由3-32位字符组成，请区分大小写</span></p>
+                    <p><em><i>*</i>确认密码:</em><input type="password" name="pwd2" id="pwd2" value="" class="iUser inputBg2" maxlength="32" /><i id="vpwd2" class=""></i><span id="mpwd2"></span></p>
+                    <p><em><i>*</i>安全邮箱:</em><input type="text" name="safeEmail" value="" id="safeEmail" maxlength="64" class="zc_btnz" /><span id="memail">填写有效的安全验证邮箱</span></p>
+                    <p class="reg-p-radio"><em><i>*</i>性别:</em><input type="radio" value="man" name="sex" id="man" /><label for="man">程序猿</label><input type="radio" value="woman" name="sex" id="woman" /><label for="woman">程序媛</label><input type="radio" value="other" name="sex" id="other" /><label for="other">程序员</label></p>
+                </div>
+                <%=sexAll%>
+            </form>
+            <div class="zc_wcBot">
+                <div class="zc-agree">
+                    <input type="button" class="zc_dBtn2" value="" />
+                    <input type="reset" class="zc_dBtn3" value="" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="bottom">
+    <p>北京天元特通科技有限公司</p>
+    <p>Copy@2013-2015 fangweisuyuan.All right reserved.京ICP备324235251号-2</p>
+</div>
+
+<script>
+
+
+</script>
+</body>
+</html>

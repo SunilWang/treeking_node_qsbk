@@ -3,7 +3,7 @@
 //        Copyright (C) 2014-2015 ahwangshu.com
 //        All rights reserved
 //
-//        filename :index.js
+//        filename :indexController.js
 //        description：
 //
 //        created by 王澍 at  2015年1月8日15:09:30

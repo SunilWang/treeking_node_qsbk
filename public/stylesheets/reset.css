@@ -1,0 +1,21 @@
+@charset "utf-8";
+body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,td,img,div,dl,dt,dd,input{margin:0;padding:0}
+body{font:12px/1 Tahoma,Helvetica,Arial,'\5b8b\4f53',sans-serif}
+h1,h2,h3,h4,h5,h6,input,button,textarea,select{font-size:100%}
+li{vertical-align:top;list-style:none}
+table{border-collapse:collapse;border-spacing:0;table-layout:fixed;word-wrap:break-word}
+img,iframe{border:none}
+input,select,input{vertical-align:middle;outline:none}
+img{vertical-align:middle}
+label,button{cursor:pointer}
+a,input,textarea{outline:none}
+address,cite,dfn,var,i,em,address{font-style:normal}
+a{text-decoration:none}
+a:hover{text-decoration:underline}
+textarea{overflow:auto;resize:none}
+.clearfix:after{display:block;visibility:hidden;clear:both;height:0;font-size:0;content:' '}
+.clearfix{*zoom:1}
+.clear{overflow:hidden;*zoom:1}
+.fl{float:left;display:inline}
+.fr{float:right;display:inline}
+.more{float:right;display:inline}

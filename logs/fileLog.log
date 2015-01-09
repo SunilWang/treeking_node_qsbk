@@ -1,38 +1,69 @@
-[2015-01-09 14:44:18.255] [INFO] logFileInfo - Express server listening on port 3000
-[2015-01-09 14:55:00.484] [INFO] logFileInfo - Express server listening on port 3000
-[2015-01-09 14:55:09.509] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
-[2015-01-09 14:55:09.519] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
-[2015-01-09 14:55:13.872] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
-[2015-01-09 14:55:17.165] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/list HTTP/1.1" 200 8 "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
-[2015-01-09 14:56:05.745] [INFO] logFileInfo - Express server listening on port 3000
-[2015-01-09 14:56:35.001] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/list HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
-[2015-01-09 14:56:38.356] [INFO] logFileInfo - Express server listening on port 3000
-[2015-01-09 14:56:59.120] [WARN] logFileInfo - IP：127.0.0.1,非法请求后台！
-[2015-01-09 14:56:59.125] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/list HTTP/1.1" 302 58 "" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
-[2015-01-09 14:56:59.632] [DEBUG] logFileInfo - 127.0.0.1 - - "GET / HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
-[2015-01-09 14:56:59.691] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/style.css HTTP/1.1" 304 - "http://localhost:3000/" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
-[2015-01-09 14:57:00.990] [WARN] logFileInfo - Error: Not Found
-    at app.use.res.render.message (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\app.js:101:15)
-    at Layer.handle [as handle_request] (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\layer.js:82:5)
-    at trim_prefix (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:271:13)
-    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:238:9
-    at Function.proto.process_params (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:313:12)
-    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:229:12
-    at Function.match_layer (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:296:3)
-    at next (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:190:10)
-    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:192:16
-    at Function.match_layer (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:296:3)
-[2015-01-09 14:57:00.997] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /favicon.ico HTTP/1.1" 200 4111 "" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
-[2015-01-09 14:57:00.999] [WARN] logFileInfo - Error: Not Found
-    at app.use.res.render.message (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\app.js:101:15)
-    at Layer.handle [as handle_request] (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\layer.js:82:5)
-    at trim_prefix (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:271:13)
-    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:238:9
-    at Function.proto.process_params (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:313:12)
-    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:229:12
-    at Function.match_layer (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:296:3)
-    at next (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:190:10)
-    at d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:192:16
-    at Function.match_layer (d:\KingTree\node\WebstormProjects\fqsbk\treeking_node_qsbk\node_modules\express\lib\router\index.js:296:3)
-[2015-01-09 14:57:01.002] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /favicon.ico HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
-[2015-01-09 14:57:03.051] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/list HTTP/1.1" 200 8 "" "Mozilla/5.0 (Windows NT 6.1; WOW64; rv:34.0) Gecko/20100101 Firefox/34.0"
+[2015-01-09 17:47:39.744] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 17:47:45.545] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/toReg HTTP/1.1" 200 2895 "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:47:45.569] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/reset.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:47:45.573] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/main.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:47:45.579] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /javascripts/jquery-1.7.2.min.js HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:47:45.585] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /images/hyzc.jpg HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:48:46.849] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/toReg HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:48:46.862] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/reset.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:48:46.864] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/main.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:48:46.873] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /javascripts/jquery-1.7.2.min.js HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:48:46.877] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /images/hyzc.jpg HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:50:30.572] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 17:50:37.334] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/toReg HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:50:37.351] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/reset.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:50:37.353] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/main.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:50:37.356] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /javascripts/jquery-1.7.2.min.js HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:50:37.359] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /images/hyzc.jpg HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 17:59:17.841] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 17:59:25.056] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 18:00:38.004] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 18:00:41.867] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/toReg HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:00:41.881] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/reset.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:00:41.893] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/main.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:00:41.894] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /javascripts/jquery-1.7.2.min.js HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:00:41.899] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /images/hyzc.jpg HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:01:11.089] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 18:01:13.386] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/toReg HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:01:13.407] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/reset.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:01:13.412] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/main.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:01:13.414] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /javascripts/jquery-1.7.2.min.js HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:01:13.415] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /images/hyzc.jpg HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:03:14.650] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 18:03:28.137] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 18:03:30.728] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/toReg HTTP/1.1" 200 2904 "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:03:30.746] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/reset.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:03:30.752] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/main.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:03:30.756] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /javascripts/jquery-1.7.2.min.js HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:03:30.764] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /images/hyzc.jpg HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:09.407] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 18:04:10.501] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/toReg HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:10.510] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/reset.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:10.560] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/main.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:10.561] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /javascripts/jquery-1.7.2.min.js HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:10.562] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /images/hyzc.jpg HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:29.993] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/toReg HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:30.003] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/reset.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:30.010] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/main.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:30.012] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /javascripts/jquery-1.7.2.min.js HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:30.013] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /images/hyzc.jpg HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:37.295] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 18:04:53.723] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/toReg HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:53.742] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/reset.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:53.744] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/main.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:53.745] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /javascripts/jquery-1.7.2.min.js HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:04:53.747] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /images/hyzc.jpg HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:06:03.427] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 18:06:07.721] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/toReg HTTP/1.1" 304 - "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:06:07.734] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/reset.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:06:07.738] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/main.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:06:07.741] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /images/hyzc.jpg HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:06:07.744] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /javascripts/jquery-1.7.2.min.js HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:06:57.186] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 18:07:58.204] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 18:10:59.490] [INFO] logFileInfo - Express server listening on port 3000
+[2015-01-09 18:11:07.381] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /users/toReg HTTP/1.1" 200 2895 "" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:11:07.441] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/reset.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:11:07.442] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /stylesheets/main.css HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:11:07.457] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /javascripts/jquery-1.7.2.min.js HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"
+[2015-01-09 18:11:07.459] [DEBUG] logFileInfo - 127.0.0.1 - - "GET /images/hyzc.jpg HTTP/1.1" 304 - "http://localhost:3000/users/toReg" "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36"

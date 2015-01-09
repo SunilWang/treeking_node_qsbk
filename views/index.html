@@ -1,17 +1,120 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <% if(title){%>
-    <p>Welcome to <%= title %></p>
-    <%}%>
-    <% if(userName){%>
-    <p>用户名为：<%=userName%></p>
-    <%}%>
 
-  </body>
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
+</head>
+
+<body class="logBg2">
+<div id="header">
+    <div class="wrap">
+        <!--<p class="head-log"><span><a href="#">登陆</a></span></p>-->
+        <p class="head-log"><span><a href="#">用户名</a><a href="#">退出</a></span></p>
+    </div>
+</div>
+
+<div id="nav">
+    <div class="wrap clearfix">
+        <a href="#" class="more">管理员入口</a>
+
+        <ul class="clearfix" id="navList">
+            <li><a href="#" class="on">热门</a></li>
+            <li><a href="#" class="on nav-ico">精华</a>
+                <div class="nav-list">
+                    <a href="#">24小时内</a>
+                    <a href="#">7天内</a>
+                    <a href="#">30天内</a>
+                </div>
+            </li>
+            <li><a href="#">最新</a></li>
+            <li><a href="#" class="nav-ico">故事</a>
+                <div class="nav-list">
+                    <a href="#">故事</a>
+                    <a href="#">事故</a>
+                </div>
+            </li>
+            <li><a href="#">反思</a></li>
+            <li><a href="#">投稿</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="QSBox">
+    <div class="QSBox-name">
+        <a href="#"><img src="/images/new-tx.png" width="40" height="40" /><span>心随事迁</span></a>
+    </div>
+
+    <div class="perQS-txt">
+        <p>世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！</p>
+    </div>
+
+    <div class="QSpart">
+        <span><i>243</i>好笑</span><a href="#"><i>324324</i>回复</a>
+    </div>
+    <div class="QSpart2">
+        <span class="QSbq QSbq1"></span><span class="QSbq QSbq2"></span><a href="#" class="QSpl"></a>
+    </div>
+</div>
+
+<div class="QSBox">
+    <div class="QSBox-name">
+        <a href="#"><img src="/images/new-tx.png" width="40" height="40" /><span>心随事迁</span></a>
+    </div>
+
+    <div class="perQS-txt">
+        <p>世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！</p>
+
+        <p><a href="#" target="_blank"><img src="/images/img.jpg" width="220" height="261" /></a></p>
+    </div>
+
+    <div class="QSpart">
+        <span><i>243</i>好笑</span><a href="#"><i>324324</i>回复</a>
+    </div>
+    <div class="QSpart2">
+        <span class="QSbq QSbq1b"></span><span class="QSbq QSbq2b"></span><a href="#" class="QSpl"></a>
+    </div>
+</div>
+
+<div class="QSmenu clear wrap">
+    <a href="#" class="QSmenu-next more QSmenu-next2">下一页</a>
+
+    <p>
+        <a href="#" class="QSmenu-pre QSmenu-pre2">&lt;</a>
+        <a href="#" class="QSmenu-num">1</a>
+        <a href="#" class="QSmenu-num">2</a>
+        <a href="#" class="QSmenu-num">3</a>
+        <a href="#" class="QSmenu-num">4</a>
+        <span>...</span>
+        <a href="#" class="QSmenu-num">35</a>
+    </p>
+</div>
+
+<div class="bottom">
+    <p>北京天元特通科技有限公司</p>
+    <p>Copy@2013-2015 fangweisuyuan.All right reserved.京ICP备324235251号-2</p>
+</div>
+
+<script>
+    var aLi = document.getElementById('navList').children;
+
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onmouseover = function(){
+            var oDiv = this.children[1];
+
+            if(!!oDiv)oDiv.style.display = 'block';
+        };
+
+        aLi[i].onmouseout = function(){
+            var oDiv = this.children[1];
+
+            if(!!oDiv)oDiv.style.display = 'none'
+        };
+    }
+</script>
+</body>
 </html>
+

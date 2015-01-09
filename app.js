@@ -44,7 +44,14 @@ log4js.configure({
             filename: 'logs/errLog.log',
             maxLogSize: 3145728,
             backups: 4
-        },
+        },{
+            category: 'dataAppenderError',
+            type: 'file',
+            filename: 'logs/dataErrLog.log',
+            maxLogSize: 3145728,
+            backups: 4
+        }
+        ,
         {
             category: 'dateFileAppender',
             type: 'dateFile',
@@ -87,8 +94,8 @@ app.use(session({
 }));
 
 
-var routes = require('./controller/index');
-var users = require('./controller/users');
+var routes = require('./controller/indexController');
+var users = require('./controller/usersController');
 var test = require('./test/testDb');
 
 
