@@ -19,9 +19,12 @@ module.exports = {
     //mongodb数据库配置
     dbConfig: {
         dbName: 'qsbknode',//数据库的名字
+        userName:'admin',
+        passwd:'1111',
         //bName:'testdb', //数据库的名字
         dbPath: '127.0.0.1', //数据库的连接地址
-        dbPort: 27017 //数据库的端口号
+        dbPort: 27017, //数据库的端口号
+        dbUrl:'mongodb://127.0.0.1/qsbknode'
     },
     /*应用配置*/
     appConfig:{
@@ -31,10 +34,26 @@ module.exports = {
     sessionConfig:{
         sessionSecret:'qsbkNode2015' //session密钥
     },
-    //404错误页面显示消息
-    _404page:{
-        url:'http://localhost:3000/', //跳转的页面
-        email:'ahwangshu@qq.com' //联系方式email
+    //网站信息
+    websiteInfo:{
+        indexUrl:'http://localhost:3000' //首页网址
+    },
+    //文件上传路径
+    uploadFile:{
+        dir:'/public/images/uploadImages/'
+    },
+    //非法请求消息和堆栈信息的映射名称
+    customServerError:{
+        CustomServerErrorMessage : '@@CustomServerErrorMessage',
+        CustomServerErrorStackInfo : '@@CustomServerErrorStackInfo'
+    },
+    //加密的密钥
+    encryption:{
+        secret:'@qsbk&Node@'
+    },
+    personalInformation:{
+        email:'ahwangshu@qq.com', //联系方式email
+        beiAnHao:'皖ICP备14010130号-2'
     }
 
 };

@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <title>登录</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="This is my page">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+    <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/validator.min.js"></script>
+</head>
+
+
+
+<body class="logBg">
+    <div class="top">
+        <div class="wrap clearfix">
+            <a href="/users/toReg" class="more">注册</a>
+            <a href="/" style="text-decoration: none"><h1>糗事百科</h1></a>
+        </div>
+    </div>
+    <div id="logBg-box">
+        <form id="loginForm" method="post">
+            <div>
+                <input type="text" placeholder="用户名" id="userName" name="userName" value="<%= userName %>" class="log-txt log-txt1"/>
+                <input type="password" placeholder="密码" id="passwd" name="passwd"  class="log-txt log-txt2" />
+                <p id="erroMsg"><%= erroMsg %></p>
+                <input type="button" id="loginSubmit" value="" class="log-sub"/>
+            </div>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+
+        $('#loginSubmit').click(function(){
+            var userName =  $('#userName').val();
+            userName = validator.trim(userName);
+
+            if(userName.length == 0){
+                $("#erroMsg").text("用户名不能为空!");
+            }else{
+                $("#erroMsg").text("");
+                var loginPassword = $("#passwd").val();
+                if(loginPassword.length == 0){
+                    $("#erroMsg").text("密码不能为空!");
+                }else{
+                    $("#erroMsg").text("");
+                    $("#loginForm").attr("action","/users/doLogin");
+                    $("#loginForm").submit();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

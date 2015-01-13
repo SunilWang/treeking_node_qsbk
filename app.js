@@ -21,9 +21,9 @@ var session    = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 var flash = require('connect-flash');
 var bodyParser = require('body-parser');
-var log4js = require('log4js');
 var config = require('./config/config');
-
+var multer  = require('multer');
+var log4js = require('log4js');
 //配置log4js
 log4js.configure({
     appenders: [
@@ -34,20 +34,20 @@ log4js.configure({
         {
             category: 'logFileInfo',
             type: 'file',
-            filename: 'logs/fileLog.log',
+            filename: '../logs/fileLog.log',
             maxLogSize: 3145728,
             backups: 4
         },
         {
             category: 'fileAppenderError',
             type: 'file',
-            filename: 'logs/errLog.log',
+            filename: '../logs/errLog.log',
             maxLogSize: 3145728,
             backups: 4
         },{
             category: 'dataAppenderError',
             type: 'file',
-            filename: 'logs/dataErrLog.log',
+            filename: '../logs/dataErrLog.log',
             maxLogSize: 3145728,
             backups: 4
         }
@@ -55,9 +55,9 @@ log4js.configure({
         {
             category: 'dateFileAppender',
             type: 'dateFile',
-            filename: 'logs/dateFileLog.log',
+            filename: '../logs/dateFileLog.log',
             pattern: '-yyyy-MM-dd',//生成的文件带有日期比如：dateFileLog-2015-1-8.log
-            alwayIncludePattern: true//是否总是包含pattern
+            alwayIncludePattern: true //是否总是包含pattern
         }
     ],
     replaceConsole: true//替换控制台
@@ -67,6 +67,7 @@ log4js.configure({
 exports.logger = function (categoryName) {
     return log4js.getLogger(categoryName || 'logFileInfo');
 };
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
@@ -83,6 +84,47 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
 
+//上传文件中间件
+app.use(multer({
+    // dest: path.join(__dirname, 'public/images/uploadImages/'),
+    dest: '..'+config.uploadFile.dir,//上传目标文件夹
+    onFileUploadStart: function (file) {
+        //判断文件后缀是否合法，如果不合法，文件将不上传，并且req.files对象为{}空对象；
+        var exts = ['jpg','gif','png','jpeg','bmp'];
+        var fileExt = file.extension.toLowerCase();
+        var bool = false;
+        for(var i = 0; i<exts.length;i++){
+            if(exts[i] === fileExt){
+                bool = true;
+                break;
+            }
+        }
+        if(!bool){
+            console.log(file.name + ':不支持的文件格式!');
+            return false;
+        }else{
+            return true;
+        }
+    },
+    rename: function (fieldname, filename) {
+        //重新命名文件名称
+        var uuidnode = require('node-uuid');
+        //uuidnode.v1() v1() 是以时间为基础生成uuid，v4()是以随机为基础生成uuid
+        var uuid = uuidnode.v1().replace(/-/g, '')//去掉uuid里的‘-’符号
+        //返回新的文件名称为：uuid加当前毫秒值
+        return  uuid + Date.now();
+    },
+    limits:{
+        fieldSize:3145728
+    },
+    onError: function (error, next) {
+        console.log('上传文件错误：' + error.stack);
+        next(error)
+    }
+}));
+
+
+
 //提供session支持
 app.use(session({
     secret: config.sessionConfig.sessionSecret,
@@ -94,6 +136,12 @@ app.use(session({
 }));
 
 
+app.use(function(req, res, next){
+    res.locals.email = config.personalInformation.email;
+    res.locals.beiAnHao = config.personalInformation.beiAnHao;
+    next();
+});
+
 var routes = require('./controller/indexController');
 var users = require('./controller/usersController');
 var test = require('./test/testDb');
@@ -103,14 +151,15 @@ var test = require('./test/testDb');
 app.use('/', test);
 app.use('/users', users);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     log4js.getLogger('logFileInfo').warn(err.stack);
     res.render('404', {
-        url: config._404page.url,
-        email:config._404page.email
+        url: config.websiteInfo.indexUrl,
+        email:config.personalInformation.email
     });
     //next(err);
 });
@@ -147,7 +196,4 @@ app.use(function(err, req, res, next) {
         error: {}
     });
 });
-
-
-
 module.exports = app;

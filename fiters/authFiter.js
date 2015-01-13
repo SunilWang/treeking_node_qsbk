@@ -16,7 +16,7 @@
 //======================================================================
 var logger = require('../app').logger();
 exports.authorize=function(req,res,next){
-    if(!req.session.user){
+    if(!req.session.userInfo){
         logger.warn('IP：'+req.ip+',非法请求后台！');
         res.redirect('/');
     }else{

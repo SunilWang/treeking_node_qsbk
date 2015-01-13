@@ -2,16 +2,17 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>用户注册</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
     <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/validator.min.js"></script>
 </head>
 <body class="logBg">
 <div class="top">
     <div class="wrap clearfix">
-        <a href="#" class="more">登陆</a>
-        <h1>糗事百科</h1>
+        <a href="/users/toLogin" class="more">登陆</a>
+        <a href="/" style="text-decoration: none"><h1> 糗事百科<h1></a>
     </div>
 </div>
 <div class="wrap regBox-bg">
@@ -23,32 +24,193 @@
             <p class="pass-info">请如实输入注册信息，我们将为您完成注册。</p>
             <form id="regForm" method="post">
                 <div class="pass-reg-box">
-                    <p><em><i>*</i>登陆姓名:</em><input type="text" id="accountName" name="accountName" value="" class="iUser inputBg1" /><i id="vName" class="zc_yzr marl5"></i><span id="mName"></span><span id="mpwd2">用户名长度为3至32个字符</span></p>
-                    <p><em><i>*</i>昵称:</em><input type="text" id="" name="" value="" class="iUser inputBg1" /><i id="vName" class="zc_yzr marl5"></i><span id="mName"></span><span id="mpwd2">用户名长度为3至32个字符</span></p>
-                    <p><em><i>*</i>密码:</em><input type="password" id="pwd1" name="accountPassword" value="" class="iUser inputBg2" /><span id="mpwd1">密码由3-32位字符组成，请区分大小写</span></p>
-                    <p><em><i>*</i>确认密码:</em><input type="password" name="pwd2" id="pwd2" value="" class="iUser inputBg2" maxlength="32" /><i id="vpwd2" class=""></i><span id="mpwd2"></span></p>
-                    <p><em><i>*</i>安全邮箱:</em><input type="text" name="safeEmail" value="" id="safeEmail" maxlength="64" class="zc_btnz" /><span id="memail">填写有效的安全验证邮箱</span></p>
-                    <p class="reg-p-radio"><em><i>*</i>性别:</em><input type="radio" value="man" name="sex" id="man" /><label for="man">程序猿</label><input type="radio" value="woman" name="sex" id="woman" /><label for="woman">程序媛</label><input type="radio" value="other" name="sex" id="other" /><label for="other">程序员</label></p>
+                    <p><em><i>*</i>登陆姓名:</em><input type="text" id="userName" name="userName" value="" class="iUser inputBg1" /><i id="vName"></i><span id="mName">用户名长度为3至32个字符</span></p>
+                    <p><em><i>*</i>昵称:</em><input type="text" id="nickName" name="nickName" value="" class="iUser inputBg1" /><i id="nName" ></i><span id="mvName">昵称长度为3至32个字符</span></p>
+                    <p><em><i>*</i>密码:</em><input type="password" id="passwd1" name="passwd" value="" class="iUser inputBg2" /><i id="vpwd1" ></i><span id="mpwd1">密码由8-32位字符组成，请区分大小写</span></p>
+                    <p><em><i>*</i>确认密码:</em><input type="password" name="passwd2" id="passwd2" value="" class="iUser inputBg2" maxlength="32" /><i id="vpwd2" class=""></i><span id="mpwd2"></span></p>
+                    <p><em><i>*</i>安全邮箱:</em><input type="text" name="safeEmail" value="" id="safeEmail" maxlength="64" class="zc_btnz" /><i id="vemail" class=""></i><span id="memail">填写有效的安全验证邮箱</span></p>
+                    <p class="reg-p-radio">
+                        <em><i>*</i>性别:</em>
+                     <%
+                        for(var i = 0; i <sexAll.length;i++){
+                     %>
+                        <input type="radio" value="<%=sexAll[i].sexName%>" <% if(i == 0){ %>checked="checked"<%}%> name="sex" /><label for="man"><%=sexAll[i].sexName%></label>
+                    <%
+                        }
+                    %>
+                    </p>
                 </div>
-                <%=sexAll%>
             </form>
             <div class="zc_wcBot">
                 <div class="zc-agree">
-                    <input type="button" class="zc_dBtn2" value="" />
-                    <input type="reset" class="zc_dBtn3" value="" />
+                    <input type="button" id="regSubmit" class="zc_dBtn2" value="" />
+                   <!-- <input type="reset" class="zc_dBtn3" value="" />-->
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="bottom">
-    <p>北京天元特通科技有限公司</p>
-    <p>Copy@2013-2015 fangweisuyuan.All right reserved.京ICP备324235251号-2</p>
-</div>
+<% include ../tags/footer %>
 
 <script>
+     function verificationLoginName(){
+        var userName =  $('#userName').val();
+        userName = validator.trim(userName);
+        if(userName.length == 0){
+            $("#vName").addClass("zc_yzw marl5");
+            $("#mName").text("用户名不能为空或小于3个字符!");
+            return false;
+        }else{
+            var bool = false;
+            $.ajax({
+                type:"POST",
+                url:"/users/isUserExists",
+                async:false,
+                data:{'userName':userName},
+                success:function(jsons) {
+                    if(jsons){
+                        bool = false;
+                        $("#vName").addClass("zc_yzw marl5");
+                        $("#mName").text("登陆姓名已存在!");
+                    }else{
+                        $("#vName").removeClass("zc_yzw marl5");
+                        $("#mName").text("");
+                        $("#vName").addClass("zc_yzr marl5");
+                        bool = true;
+                    }
+                },
+                error:function(jsons){
+                    alert('验证登录名是否重复数据加载失败,请重试..');
+                    bool = false;
+                }
+            });
+            return bool;
+        }
+
+    }
+
+    function verificationNickname(){
+        var nickName =  $('#nickName').val();
+        nickName = validator.trim(nickName);
+
+        if(nickName.length < 3)
+        {
+            $("#nName").addClass("zc_yzw marl5");
+            $("#mvName").text("昵称不能为空或小于3个字符!");
+            return false;
+        }else{
+            var bool = false;
+            $.ajax({
+                type:"POST",
+                url:"/users/isUserExists",
+                async:false,
+                data:{'nickName':nickName},
+                success:function(jsons) {
+                    if(jsons){
+                        bool = false;
+                        $("#nName").addClass("zc_yzw marl5");
+                        $("#mvName").text("昵称已存在!");
+                    }else{
+                        $("#nName").removeClass("zc_yzw marl5");
+                        $("#mvName").text("");
+                        $("#nName").addClass("zc_yzr marl5");
+                        bool = true;
+                    }
+                },
+                error:function(jsons){
+                    alert('验证昵称是否重复数据加载失败,请重试..');
+                    bool = false;
+                }
+            });
+            return bool;
+        }
+    }
 
 
+    function verificationLoginPassword(){
+        var passwd1 = $("#passwd1").val();
+        if(passwd1.length < 8)
+        {
+            $("#vpwd1").addClass("zc_yzw marl5");
+            $("#mpwd1").text("密码不能为空或小于8个字符!");
+            return false;
+        }else{
+            $("#vpwd1").removeClass("zc_yzw marl5");
+            $("#vpwd1").addClass("zc_yzr marl5");
+            $("#mpwd1").text("");
+            return true;
+        }
+    }
+
+    function verificationLoginRepeatPassword(){
+        var passwd1 = $("#passwd1").val();
+        var pwd2 = $("#passwd2").val();
+        if(pwd2.length < 8){
+            $("#vpwd2").addClass("zc_yzw marl5");
+            $("#mpwd2").text("确认密码不能小于8个字符或为空!");
+            return false;
+        }else if(passwd1 != pwd2){
+            $("#vpwd2").addClass("zc_yzw marl5");
+            $("#mpwd2").text("两次输入的密码不相同!");
+            return false;
+        }else{
+            $("#vpwd2").removeClass("zc_yzw marl5");
+            $("#vpwd2").addClass("zc_yzr marl5");
+            $("#mpwd2").text("");
+            return true;
+        }
+    }
+
+    function verificationEmail(){
+        var safeEmail = $("#safeEmail").val();
+        //var reg = /^([A-Za-z0-9]+[_|\_|\.]?)*[A-Za-z0-9]+@([A-Za-z0-9]+[\.]?)*[A-Za-z0-9]+\.[A-Za-z]{2,3}$/;
+        if(!validator.isEmail(safeEmail)){
+            $("#vemail").addClass("zc_yzw marl5");
+            $("#memail").html("请填写正确的Email!");
+            return false;
+        }else{
+            var bool = false;
+            $.ajax({
+                type:"POST",
+                url:"/users/isUserExists",
+                async:false,
+                data:{'safeEmail':safeEmail},
+                success:function(jsons) {
+                    if(jsons){
+                        bool = false;
+                        $("#vemail").addClass("zc_yzw marl5");
+                        $("#memail").text("Email已存在!");
+                    }else{
+                        $("#vemail").removeClass("zc_yzw marl5");
+                        $("#memail").text("");
+                        $("#vemail").addClass("zc_yzr marl5");
+                        bool = true;
+                    }
+                },
+                error:function(jsons){
+                    alert('验证Email是否重复数据加载失败,请重试..');
+                    bool = false;
+                }
+            });
+            return bool;
+        }
+
+
+    }
+
+    $("#userName").blur(verificationLoginName);
+    $("#nickName").blur(verificationNickname);
+    $("#passwd1").blur(verificationLoginPassword);
+    $("#passwd2").blur(verificationLoginRepeatPassword);
+    $("#safeEmail").blur(verificationEmail);
+    $('#regSubmit').click(verificationLogin);
+
+    function verificationLogin(){
+        if(verificationLoginName() & verificationNickname() & verificationLoginPassword() & verificationLoginRepeatPassword() & verificationEmail()){
+            $("#regForm").attr("action","/users/registeredUsers");
+            $("#regForm").submit();
+        }
+    }
 </script>
 </body>
 </html>

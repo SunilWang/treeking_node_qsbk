@@ -19,7 +19,7 @@ var indexController = require('../controller/indexController');
 expect.routeManager = function(app){
 
     //网站主页注册信息
-    app.use('/',usersController);
+    app.use('/',indexController);
     //用户路由注册信息
-    app.use('/user',indexController);
+    app.use('/users',usersController);
 }
