@@ -24,6 +24,7 @@ var bodyParser = require('body-parser');
 var config = require('./config/config');
 var multer  = require('multer');
 var log4js = require('log4js');
+var compress = require('compression');
 
 //配置log4js
 log4js.configure({
@@ -82,6 +83,7 @@ app.use(log4js.connectLogger(log4js.getLogger("logFileInfo"), {level: log4js.lev
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(require('cookie-parser')(config.sessionConfig.sessionSecret));
+app.use(compress());
 //app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
