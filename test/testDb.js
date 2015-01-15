@@ -29,11 +29,11 @@ var timer = require('../util/timer');
 router.get('/', function(req, res) {
     req.session.user={name:'wangshu',pass:'admin1234'};
     //req.flash('@@CustomServerErrorMessage','非法请求数据');
-    req.flash(customServerError.CustomServerErrorStackInfo,'您不能这样去访问啊。。。。');
+    //req.flash(customServerError.CustomServerErrorStackInfo,'您不能这样去访问啊。。。。');
     //RequestProcessing.customServerError(req,res);
-    console.log(req.body.name);
+    //console.log(req.body.name);
 
-    var news = mongodb.collection('news');
+    //var news = mongodb.collection('news');
 
    /* timer.open(function(){
         news.findOne({},function(err,data) {

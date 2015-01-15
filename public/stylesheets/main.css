@@ -185,9 +185,11 @@ outline:none;overflow:hidden;padding:5px;}
 .deliverArea textarea{display:block; padding:10px; height:240px; overflow:hidden; overflow-y:auto; resize:none; width:628px; border:0 none; line-height:20px; font-size:14px; background:#f8f7f7;}
 .deliverOpt{padding:10px; border-top:1px #b4b4b4 solid; font-size:14px; color:#888;}
 .deliverInfo{padding:20px; color:#d40000; background:url(../images/ico13.gif) no-repeat 0 50%;}
-.deliverBtn{display:block; width:100px; height:40px; line-height:999px; overflow:hidden; font-size:0; background:url(../images/ico12.gif) no-repeat 0 0; border:none; cursor:pointer;}
-.deliver-r dl{font-size:14px; color:#303030; line-height:36px;}
-.deliver-r dd{border-top:1px #dbdbdb solid; padding:20px 0;}
+.deliverBtn{display:block; width:100px; height:40px; line-height:999px; overflow:hidden; font-size:0; background:url(../images/ico12.gif) no-repeat 0 0; border:none; cursor:pointer;margin-top: 10px;}
+.deliver-r dl{font-size:14px; color:#666; line-height:36px;}
+.deliver-r dd{border-top:1px #efefef solid; padding:15px 0;}
+.deliver-notice{font-family: "Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;}
+
 
 .set-l-list{padding-top:10px;}
 .set-l-list,.set-l-list a{color:#5f5f5f;}

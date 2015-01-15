@@ -24,6 +24,7 @@ var bodyParser = require('body-parser');
 var config = require('./config/config');
 var multer  = require('multer');
 var log4js = require('log4js');
+
 //配置log4js
 log4js.configure({
     appenders: [
@@ -79,15 +80,29 @@ app.use(logger('dev'));
 //app.use(log4js.connectLogger(log4js.getLogger("logFileInfo"), {level: log4js.levels.DEBUG, format: ':remote-addr :method :url :status'}));//日志带有格式format的日志输出
 app.use(log4js.connectLogger(log4js.getLogger("logFileInfo"), {level: log4js.levels.DEBUG}));//格式是默认日志的输出
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(require('cookie-parser')(config.sessionConfig.sessionSecret));
+//app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());
+var authFiter = require('./fiters/authFiter');
+//提供session支持
+app.use(session({
+    secret: config.sessionConfig.sessionSecret,
+    store: new MongoStore({
+        db: config.dbConfig.dbName
+    }),
+    saveUninitialized: false,
+    resave: true
+}));
+
+app.use(authFiter.authUser);
+
 
 //上传文件中间件
 app.use(multer({
     // dest: path.join(__dirname, 'public/images/uploadImages/'),
-    dest: '..'+config.uploadFile.dir,//上传目标文件夹
+    dest: config.uploadFile.dir,//上传目标文件夹
     onFileUploadStart: function (file) {
         //判断文件后缀是否合法，如果不合法，文件将不上传，并且req.files对象为{}空对象；
         var exts = ['jpg','gif','png','jpeg','bmp'];
@@ -125,31 +140,25 @@ app.use(multer({
 
 
 
-//提供session支持
-app.use(session({
-    secret: config.sessionConfig.sessionSecret,
-    store: new MongoStore({
-        db: config.dbConfig.dbName
-    }),
-    saveUninitialized: false,
-    resave: true
-}));
+
 
 
 app.use(function(req, res, next){
     res.locals.email = config.personalInformation.email;
     res.locals.beiAnHao = config.personalInformation.beiAnHao;
+   // res.locals.userInfo = req.session.userInfo;
     next();
 });
 
-var routes = require('./controller/indexController');
+var index = require('./controller/indexController');
 var users = require('./controller/usersController');
-var test = require('./test/testDb');
+//var test = require('./test/testDb');
 
 
 //app.use('/', routes);
-app.use('/', test);
+app.use('/', index);
 app.use('/users', users);
+
 
 
 // catch 404 and forward to error handler

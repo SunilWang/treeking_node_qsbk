@@ -1,0 +1,9 @@
+<div id="header">
+    <div class="wrap">
+        <% if (typeof(userInfo) !== 'undefined') {%>
+        <p class="head-log"><span><a href="/users/toEdit"><%=userInfo.userName%></a><a href="/users/logOut">退出</a></span></p>
+        <% }else{ %>
+        <p class="head-log"><span><a href="/users/toLogin">登陆</a><a href="/users/toReg">注册</a></span></p>
+        <%}%>
+    </div>
+</div>

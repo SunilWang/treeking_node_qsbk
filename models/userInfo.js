@@ -29,7 +29,8 @@ var UserInfoSchema = new Schema({
     safeEmail: { type: String,default: ''},//安全邮箱
     headImage: { type: String,default: ''},//头像
     isDisable: { type: Boolean,default: false},//是否禁用
-    createTime: { type: Date,default: Date.now}//创建时间
+    createTime: { type: Date,default: Date.now},//创建时间
+    isAdmin:{type: Boolean,default: false}
 
 });
 UserInfoSchema.index({userName:1});

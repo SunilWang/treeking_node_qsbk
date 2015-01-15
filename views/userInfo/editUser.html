@@ -1,0 +1,276 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%=userInfo.nickName%> 修改个人信息</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+    <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/validator.min.js"></script>
+</head>
+
+<body class="logBg">
+<% include ../tags/loginHeader %>
+
+<div class="wrap clearfix setWrap">
+    <div class="set-l fl boxBor">
+        <% if(userInfo.headImage){ %>
+            <img src="<%=userInfo.headImage%>" width="95" height="95" class="set-touxiang"/>
+        <%}else{%>
+            <img src="/images/touxiang.jpg" width="95" height="95" class="set-touxiang"/>
+        <%}%>
+        <p class="set-touxiang-name"><%=userInfo.nickName%></p>
+        <% if(userInfo.signature) {%>
+            <p class="set-qianming"><%=userInfo.signature%></p>
+        <%}else{%>
+            <p class="set-qianming" style="font-style:italic">这家伙很懒，什么个性签名都没有留下。</p>
+        <%}%>
+        <div class="set-ico">
+            <span class="set-level">
+                <% if(userInfo.level === '码农'){ %>
+                    <em>码农</em><i>2</i>
+                <%}else if(userInfo.level === '程序员'){%>
+                    <em>码农</em><i>3</i>
+                <%}else if(userInfo.level === '架构师'){%>
+                    <em>架构师</em><i>4</i>
+                <%}else if(userInfo.level === '院士'){%>
+                    <em>院士</em><i>5</i>
+                <%}else if(userInfo.level === '科学家'){%>
+                    <em>科学家</em><i>6</i>
+                <%}else if(userInfo.level === '图灵'){%>
+                    <em>图灵</em><i>6</i>
+                <%}else{%>
+                    <em>菜鸟</em><i>1</i>
+                <%}%>
+            </span>
+
+            <% if(userInfo.sex === '程序猿'){%>
+                <span class="set-sex set-sex1">程序猿</span>
+            <%}else if(userInfo.sex === '程序媛'){%>
+                <span class="set-sex set-sex3">程序媛</span>
+            <%}else{%>
+                <span class="set-sex set-sex2">程序员</span>
+            <%}%>
+        </div>
+    </div>
+    <div class="set-r fr">
+        <div class="boxBor clearfix">
+            <h3>修改头像</h3>
+            <form action="/users/uploadHeadPortrait" method="post" id="imgForm" enctype="multipart/form-data">
+                <p>选取头像（200x200，文件大小不得超过2M）</p>
+                <p>
+                    <input type="file" id="imgFile" onChange="javascript:checkFormat(this.value);"  name="headImage"/>
+                    <span style="color: red;" id="imgErro"></span>
+                </p>
+                <p><input type="button" id="imgFileSubmit" value="" class="set-btn set-sc"/></p>
+                <input type="hidden" name="_id" value="<%=userInfo._id%>" class="set-btn set-bc"/>
+            </form>
+        </div>
+
+        <div class="boxBor clearfix">
+            <form action="/users/doEdit" method="post" id="nicknameForm">
+                <h3>修改昵称</h3>
+                <p><input type="text" name="nickName" id="nickName" value="<%=userInfo.nickName%>" placeholder="昵称长度为3至32个字符" class="set-txt"/></p>
+                <p><span style="color: red;" id="nicknameErro"></span></p>
+                <p><input type="button" value="" id="nicknameSubmit" class="set-btn set-bc"/></p>
+                <input type="hidden" name="_id" value="<%=userInfo._id%>" class="set-btn set-bc"/>
+            </form>
+        </div>
+
+        <div class="boxBor clearfix">
+            <h3>修改签名档</h3>
+            <form action="/users/doEdit" method="post">
+                <p><textarea class="set-area" placeholder="请输入签名档" name="signature"><%=userInfo.signature%></textarea></p>
+                <p><input type="submit" value="" class="set-btn set-bc"/></p>
+                <input type="hidden" name="_id" value="<%=userInfo._id%>" class="set-btn set-bc"/>
+            </form>
+        </div>
+
+        <div class="boxBor clearfix">
+            <h3>修改邮箱</h3>
+            <form action="/users/doEdit" method="post" id="emailForm">
+                <p><em>Email(<%=userInfo.safeEmail%>)</em><i class="iCor">已绑定</i></p>
+                <p><input type="text" placeholder="请输入正确的邮箱" id="safeEmail" name="safeEmail" class="set-txt"/></p>
+                <p><span style="color: red;" id="emailErro"></span></p>
+                <p><input type="button" value="" id="emailSubmit"  class="set-btn set-bc"/></p>
+                <input type="hidden" name="_id" value="<%=userInfo._id%>" class="set-btn set-bc"/>
+            </form>
+        </div>
+
+        <div class="boxBor clearfix">
+            <h3>修改密码</h3>
+            <form action="/users/doEdit" method="post" id="loginPasswordForm">
+                <p><label class="set-lab">当前密码：</label><input type="password" id="passwd" class="set-txt set-txt2"/></p>
+                <p><label class="set-lab">新密码：</label><input type="password" id="newPasswd" name="passwd" class="set-txt set-txt2"/><span>密码由8-32位字符组成，请区分大小写</span></p>
+                <p><label class="set-lab">重复密码：</label><input type="password" id="newPasswd2" class="set-txt set-txt2"/></p>
+                <p><span style="color: red;" id="loginPasswordErro"></span></p>
+                <p><input type="button" value="" id="loginPasswordSubmit" class="set-btn set-bc"/></p>
+                <input type="hidden" name="_id" value="<%=userInfo._id%>" class="set-btn set-bc"/>
+            </form>
+        </div>
+
+        <div class="boxBor clearfix">
+            <h3>修改性别</h3>
+            <form action="/users/doEdit" method="post">
+                <p>
+                    <input type="radio" name="sex" value="程序猿" <% if(userInfo.sex === '程序猿'){%>checked<%}%>  id="man"/><label for="man" class="set-lab2 set-lab2ico">程序猿</label>
+                    <input type="radio" name="sex" value="程序媛" <% if(userInfo.sex === '程序媛'){%>checked<%}%>  id="woman"/><label for="woman" class="set-lab2 set-lab2ico2">程序媛</label>
+                    <input type="radio" name="sex" value="程序员" <% if(userInfo.sex === '程序员'){%>checked<%}%> id="other"/><label for="other" class="set-lab2 set-lab2ico3">程序员</label>
+                </p>
+                <p><input type="submit" value="" class="set-btn set-bc"/></p>
+                <input type="hidden" name="_id" value="<%=userInfo._id%>" class="set-btn set-bc"/>
+            </form>
+        </div>
+
+        <div class="boxBor clearfix">
+            <h3>修改等级</h3>
+            <form action="/users/doEdit" method="post">
+                <p><input type="radio" name="level" value="菜鸟" <% if(userInfo.level === '菜鸟'){%>checked<%}%> /><span class="set-level"><em>菜鸟</em><i>1</i></span></p>
+                <p><input type="radio" name="level" value="码农" <% if(userInfo.level === '码农'){%>checked<%}%> /><span class="set-level"><em>码农</em><i>2</i></span></p>
+                <p><input type="radio" name="level" value="程序员" <% if(userInfo.level === '程序员'){%>checked<%}%> /><span class="set-level"><em>程序员</em><i>3</i></span></p>
+                <p><input type="radio" name="level" value="架构师" <% if(userInfo.level === '架构师'){%>checked<%}%> /><span class="set-level"><em>架构师</em><i>4</i></span></p>
+                <p><input type="radio" name="level" value="院士" <% if(userInfo.level === '院士'){%>checked<%}%> /><span class="set-level"><em>院士</em><i>5</i></span></p>
+                <p><input type="radio" name="level" value="科学家" <% if(userInfo.level === '科学家'){%>checked<%}%> /><span class="set-level"><em>科学家</em><i>6</i></span></p>
+                <p><input type="radio" name="level" value="图灵" <% if(userInfo.level === '图灵'){%>checked<%}%> /><span class="set-level"><em>图灵</em><i>7</i></span></p>
+                <p><input type="submit" value="" class="set-btn set-bc"/></p>
+                <input type="hidden" name="_id" value="<%=userInfo._id%>" class="set-btn set-bc"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+<% include ../tags/footer %>
+<script>
+
+    function checkFormat(filePath) {
+        var   i = filePath.lastIndexOf('.');
+        var   len = filePath.length;
+        var   str = filePath.substring(len,i+1);
+        var   extName = "JPG,GIF,PNG,JPEG,BMP";
+        if(extName.indexOf(str.toUpperCase()) < 0)  {
+            $('#imgErro').text('请选择正确的图片文件!');
+            return false;
+        }else{
+            $('#imgErro').text('');
+            return true;
+        }
+    }
+
+    $('#nicknameSubmit').click(function(){
+        var nickName =  $('#nickName').val();
+        nickName = validator.trim(nickName);
+        var sessionNickname = '<%=userInfo.nickName%>';
+        if(nickName.length < 3)
+        {
+            $("#nicknameErro").text("昵称不能为空或小于3个字符!");
+        }else{
+            if(sessionNickname != nickName){
+                $.ajax({
+                    type:"POST",
+                    url:"/users/isUserExists",
+                    async:false,
+                    data:{'nickName':nickName},
+                    success:function(jsons) {
+                        if(Boolean(jsons)){
+                            $("#nicknameErro").text("昵称已存在!");
+                        }else{
+                            $("#nicknameErro").text("");
+                            $("#nicknameForm").submit();
+                        }
+                    },
+                    error:function(jsons){
+                        alert('验证昵称是否重复数据加载失败,请重试..');
+                    }
+                });
+            }else{
+                $("#nicknameErro").text("");
+                $("#nicknameForm").submit();
+            }
+
+        }
+    });
+
+    $('#emailSubmit').click(function(){
+
+        var safeEmail = $("#safeEmail").val();
+        var sessionSafeEmail = '<%=userInfo.safeEmail%>';
+
+        if(!validator.isEmail(safeEmail)){
+            $("#emailErro").text("请填写正确的Email!");
+        }else{
+            if(sessionSafeEmail != safeEmail){
+                $.ajax({
+                    type:"POST",
+                    url:"/users/isUserExists",
+                    async:false,
+                    data:{'safeEmail':safeEmail},
+                    success:function(jsons) {
+                        if(Boolean(jsons)){
+                            $("#emailErro").text("Email已存在!");
+                        }else{
+                            $("#emailErro").text("");
+                            $("#emailForm").submit();
+                        }
+                    },
+                    error:function(jsons){
+                        alert('验证Email是否重复数据加载失败,请重试..');
+                    }
+                });
+            }else{
+                $("#emailErro").text("");
+                $("#emailForm").submit();
+            }
+
+        }
+    });
+
+
+    $('#loginPasswordSubmit').click(function(){
+        var passwd = $("#passwd").val();
+        if(passwd == 0)
+        {
+            $("#loginPasswordErro").text("原密码不能为空!");
+        }else{
+            $.ajax({
+                type:"POST",
+                url:"/users/isUserExists",
+                async:false,
+                data:{'passwd':passwd,'_id':'<%=userInfo._id%>'},
+                success:function(jsons) {
+                    if(Boolean(jsons)){
+                        $("#loginPasswordErro").text("");
+                        var newPasswd = $("#newPasswd").val();
+                        var newPasswd2 = $("#newPasswd2").val();
+                        if(newPasswd.length == 0){
+                            $("#loginPasswordErro").text("新密码不能为空!");
+                        }else{
+                            if(newPasswd != newPasswd2){
+                                $("#loginPasswordErro").text("两次输入的密码不相同!");
+                            }else{
+                                $("#loginPasswordErro").text("");
+                                $("#loginPasswordForm").submit();
+                            }
+                        }
+                    }else{
+                        $("#loginPasswordErro").text("原密码不正确!");
+                    }
+                },
+                error:function(jsons){
+                    alert('验证原密码是否存在数据加载失败,请重试..');
+                }
+            });
+        }
+    });
+
+
+    $('#imgFileSubmit').click(function(){
+        var imgFile = $("#imgFile").val();
+        if(checkFormat(imgFile)){
+            $("#emailErro").text("");
+            $("#imgForm").submit();
+        }
+    });
+</script>
+</body>
+</html>
+

@@ -28,8 +28,15 @@
                     <p><em><i>*</i>昵称:</em><input type="text" id="nickName" name="nickName" value="" class="iUser inputBg1" /><i id="nName" ></i><span id="mvName">昵称长度为3至32个字符</span></p>
                     <p><em><i>*</i>密码:</em><input type="password" id="passwd1" name="passwd" value="" class="iUser inputBg2" /><i id="vpwd1" ></i><span id="mpwd1">密码由8-32位字符组成，请区分大小写</span></p>
                     <p><em><i>*</i>确认密码:</em><input type="password" name="passwd2" id="passwd2" value="" class="iUser inputBg2" maxlength="32" /><i id="vpwd2" class=""></i><span id="mpwd2"></span></p>
-                    <p><em><i>*</i>安全邮箱:</em><input type="text" name="safeEmail" value="" id="safeEmail" maxlength="64" class="zc_btnz" /><i id="vemail" class=""></i><span id="memail">填写有效的安全验证邮箱</span></p>
+                    <p><em><i>*</i>安全邮箱:</em><input type="text" name="safeEmail" value="" id="safeEmail" maxlength="64" class=" iUser  inputBg2" /><i id="vemail" class=""></i><span id="memail">填写有效的安全验证邮箱</span></p>
                     <p class="reg-p-radio">
+                        <em><i>*</i>性别:</em>
+                        <input type="radio" value="程序员" checked="checked" name="sex" id="other"/><label for="other">程序员</label>
+                        <input type="radio" value="程序猿" name="sex" id="man"/><label for="man">程序猿</label>
+                        <input type="radio" value="程序媛" name="sex" id="woman"/><label for="woman">程序媛</label>
+                    </p>
+
+                    <!--<p class="reg-p-radio">
                         <em><i>*</i>性别:</em>
                      <%
                         for(var i = 0; i <sexAll.length;i++){
@@ -38,7 +45,7 @@
                     <%
                         }
                     %>
-                    </p>
+                    </p>-->
                 </div>
             </form>
             <div class="zc_wcBot">

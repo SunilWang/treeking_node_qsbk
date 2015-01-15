@@ -30,6 +30,7 @@ console.log(en);
 var de = encryption.decrypt('1dd702464da8ffefcea8bf4507a56207',config.encryption.secret)
 console.log(de);*/
 
+/*
 var obj = function (name,age,aihao,pass){
     this.name = name;
     this.age = age;
@@ -45,3 +46,7 @@ for(var o in oob){
     }
 }
 console.log(oob);
+*/
+var arr =['abc','def','ghi','jkl'];
+
+console.log(arr.indexOf('ef'));

@@ -15,23 +15,44 @@
 var express = require('express');
 var router = express.Router();
 var log4js = require('./../app').logger();
-var mongodb = require('../util/mongoJoin').db;
-/* GET home page. */
+var authFiter = require('../fiters/authFiter');
+var objUtil = require('../util/objUtil');
+var storyInfoService = require('../service/storyInfoService');
+var RequestProcessing  = require('../util/requestProcessing');
+var config = require('../config/config');
+var customServerError = config.customServerError;
+
 router.get('/', function(req, res) {
-      req.session.user={name:'wangshu',pass:'admin1234'};
-
-      //var news = mongodb.collection('news');
-     /* news.insert({
-              "title" : "新闻标题7",
-              "contert" : "这是新闻内容",
-              "pulisher" : "发布者",
-              "publishTime" : new Date().toLocaleString()
-      });*/
-      /*news.count(function(err,count){
-          console.log(count);
-      });*/
-
-    res.render('index', { title: 'Express' });
+    res.render('index');
 });
+
+router.get('/add',authFiter.authorize,function(req,res){
+    res.render('storyInfo/deliver');
+});
+
+
+router.post('/add',authFiter.authorize,function(req,res){
+
+    var content = req.body.content;
+    var imageFile =  req.files.imgFile;
+    var userInof = req.session.userInfo;
+    var imageFilePath = '';
+    if(imageFile && !objUtil.isEmptyObj(imageFile)){
+        imageFilePath = imageFile.path;
+        imageFilePath = imageFilePath.replace('public','').replace(/\\/g,'/');
+    }
+
+    if(content){
+        storyInfoService.newStoryInfo(content,imageFilePath,userInof._id,function(err,storyInfo){
+            res.redirect('/');
+        });
+    }else{
+            req.flash(customServerError.CustomServerErrorStackInfo,'非法添加稿件信息!');
+            RequestProcessing.customServerError(req,res);
+    }
+
+});
+
+
 
 module.exports = router;

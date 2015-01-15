@@ -25,12 +25,21 @@ exports.getUserInfo = function (query,callback){
 }
 
 
-exports.newAndUserInfo = function (userName,passwd,nickName,sex,safeEmail, callback) {
+exports.getUsersByIds = function (ids, callback) {
+    UserInfo.find({'_id': {'$in': ids}}, callback);
+};
+
+exports.getUserById = function (id, callback) {
+    UserInfo.findOne({_id: id}, callback);
+};
+
+exports.newAndUserInfo = function (userName,passwd,nickName,sex,safeEmail,isAdmin, callback) {
     var userInfo = new UserInfo();
     userInfo.userName = userName;
     userInfo.passwd = passwd;
     userInfo.nickName = nickName;
     userInfo.sex = sex;
     userInfo.safeEmail = safeEmail;
+    userInfo.isAdmin = isAdmin;
     userInfo.save(callback);
 };

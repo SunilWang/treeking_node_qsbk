@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
+    <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/validator.min.js"></script>
+</head>
+
+<body class="logBg2">
+<% include ../tags/loginIndexBlock %>
+
+<div id="nav">
+    <div class="wrap clearfix">
+        <% if (typeof(userInfo) !== 'undefined') { %>
+            <% if(userInfo.isAdmin){ %>
+                <a href="#" class="more">管理员入口</a>
+            <%}%>
+        <%}%>
+
+        <ul class="clearfix" id="navList">
+            <li><a href="#" class="on">热门</a></li>
+            <li><a href="#" class="on nav-ico">精华</a>
+                <div class="nav-list">
+                    <a href="#">24小时内</a>
+                    <a href="#">7天内</a>
+                    <a href="#">30天内</a>
+                </div>
+            </li>
+            <li><a href="#">最新</a></li>
+            <li><a href="#" class="nav-ico">故事</a>
+                <div class="nav-list">
+                    <a href="#">故事</a>
+                    <a href="#">事故</a>
+                </div>
+            </li>
+            <li><a href="#">反思</a></li>
+            <li><a href="#">投稿</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="QSBox deliver">
+    <div class="deliver-l fl">
+        <form method="post" enctype="multipart/form-data" id="addStoryInfoForm" action="/add">
+            <div class="deliverBox">
+                <div class="deliverArea"><textarea id="content" onkeyup="keyUp()" name="content" placeholder="请输入少于260个字"></textarea></div>
+                <div class="deliverOpt">
+                    <label>图片：</label><input type="file" name="imgFile" id="imgFile" onChange="javascript:checkFormat(this.value);"/>
+                </div>
+            </div>
+            <div id="addStoryInfoErro"></div>
+            <input type="button" id="addStoryInfoSubmit" value="" class="deliverBtn"/>
+        </form>
+    </div>
+    <div class="deliver-r fr deliver-notice">
+        <dl>
+            <dt>投稿须知</dt>
+            <dd>1.自己的或朋友的糗事，真实有笑点，不含政治、色情、广告、诽谤、歧视等内容。</dd>
+            <dd>2.糗事需经过审核后发表。</dd>
+            <dd>3.转载请注明出处。</dd>
+        </dl>
+    </div>
+</div>
+
+<div class="bottom">
+    <p>北京天元特通科技有限公司</p>
+    <p>Copy@2013-2015 fangweisuyuan.All right reserved.京ICP备324235251号-2</p>
+</div>
+
+<script>
+
+    function checkFormat(filePath) {
+        var   i = filePath.lastIndexOf('.');
+        var   len = filePath.length;
+        var   str = filePath.substring(len,i+1);
+        var   extName = "JPG,GIF,PNG,JPEG,BMP";
+        if(extName.indexOf(str.toUpperCase()) < 0)  {
+            $('#addStoryInfoErro').text('请选择正确的图片文件!');
+            $("#addStoryInfoErro").addClass("deliverInfo");
+            return false;
+        }else{
+            $('#addStoryInfoErro').text('');
+            $("#addStoryInfoErro").removeClass("deliverInfo");
+            return true;
+        }
+    }
+
+
+    $('#addStoryInfoSubmit').click(function(){
+        var imgFile = $("#imgFile").val();
+        var content = $("#content").val();
+        content = validator.trim(content);
+
+
+        if(checkFormat(imgFile)){
+            if(content.length == 0){
+                $('#addStoryInfoErro').text('内容不能为空!');
+                $("#addStoryInfoErro").addClass("deliverInfo");
+            }else if(content.length > 260){
+                $('#addStoryInfoErro').text('字数超出260个限制!');
+                $("#addStoryInfoErro").addClass("deliverInfo");
+            }else{
+                $("#addStoryInfoErro").text("");
+                $("#addStoryInfoErro").removeClass("deliverInfo");
+                $("#addStoryInfoForm").submit();
+            }
+        }
+    });
+
+    function keyUp(){
+        var content = $("#content").val();
+        content = validator.trim(content);
+        if(content.length > 260){
+           document.getElementById('addStoryInfoSubmit').style.display = 'none';
+           $('#addStoryInfoErro').text('字数超出260个限制!');
+           $("#addStoryInfoErro").addClass("deliverInfo");
+        }else{
+           document.getElementById('addStoryInfoSubmit').style.display = 'block';
+           $("#addStoryInfoErro").text("");
+           $("#addStoryInfoErro").removeClass("deliverInfo");
+        }
+    }
+
+    var aLi = document.getElementById('navList').children;
+
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onmouseover = function(){
+            var oDiv = this.children[1];
+
+            if(!!oDiv)oDiv.style.display = 'block';
+        };
+
+        aLi[i].onmouseout = function(){
+            var oDiv = this.children[1];
+
+            if(!!oDiv)oDiv.style.display = 'none'
+        };
+    }
+</script>
+</body>
+</html>
+

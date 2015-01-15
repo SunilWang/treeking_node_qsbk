@@ -9,17 +9,15 @@
 </head>
 
 <body class="logBg2">
-<div id="header">
-    <div class="wrap">
-        <p class="head-log"><span><a href="#">注册</a><a href="#">登陆</a></span></p>
-        <!--<p class="head-log"><span><a href="#">用户名</a><a href="#">退出</a></span></p>-->
-    </div>
-</div>
+<% include /tags/loginIndexBlock %>
 
 <div id="nav">
     <div class="wrap clearfix">
-        <a href="#" class="more">管理员入口</a>
-
+        <% if (typeof(userInfo) !== 'undefined') { %>
+            <% if(userInfo.isAdmin){ %>
+              <a href="#" class="more">管理员入口</a>
+            <%}%>
+        <%}%>
         <ul class="clearfix" id="navList">
             <li><a href="#" class="on">热门</a></li>
             <li><a href="#" class="on nav-ico">精华</a>
@@ -36,8 +34,8 @@
                     <a href="#">事故</a>
                 </div>
             </li>
-            <li><a href="#">反思</a></li>
-            <li><a href="#">投稿</a></li>
+            <li><a href="/累了不写代码了，休息会儿~ 哈哈，就是想让你们看看404页面！">穿越</a></li>
+            <li><a href="/add">投稿</a></li>
         </ul>
     </div>
 </div>

@@ -32,15 +32,16 @@ module.exports = {
     },
     //session配置信息
     sessionConfig:{
-        sessionSecret:'qsbkNode2015' //session密钥
+        sessionSecret:'qsbkNode2015',//session密钥
+        auth_cookie_name:'false_qsbk' //cookie的名字
     },
     //网站信息
     websiteInfo:{
-        indexUrl:'http://localhost:3000' //首页网址
+        indexUrl:'http://www.ahwangshu.com' //首页网址
     },
     //文件上传路径
     uploadFile:{
-        dir:'/public/images/uploadImages/'
+        dir:'./public/images/uploadImages/'
     },
     //非法请求消息和堆栈信息的映射名称
     customServerError:{

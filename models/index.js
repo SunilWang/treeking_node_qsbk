@@ -31,8 +31,9 @@ mongoose.connect(dbConfig.dbUrl, function (err) {
 // models
 require('./sexInfo');
 require('./userInfo');
-
+require('./storyInfo');
 
 
 exports.SexInfo = mongoose.model('SexInfo');
 exports.UserInfo = mongoose.model('UserInfo');
+exports.StoryInfo = mongoose.model('StoryInfo');

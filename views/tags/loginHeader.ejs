@@ -1,0 +1,19 @@
+<div class="top top2">
+    <div class="wrap clearfix">
+        <ul class="more clear">
+            <li class="ie6bug">
+                <a href="javascript:;">
+                    <% if(userInfo.headImage){ %>
+                        <img src="<%=userInfo.headImage%>" width="25" height="25" /><%=userInfo.userName%>
+                    <%}else{%>
+                        <img src="/images/ico.png" width="25" height="25" /><%=userInfo.userName%>
+                    <%}%>
+
+                </a>
+            </li>
+            <li class="ie6bug"><a href="/users/toEdit"><img src="/images/ico2.png" width="25" height="25" />设置</a></li>
+            <li><a href="/users/logOut">退出</a></li>
+        </ul>
+        <a href="/" style="text-decoration: none"><h1>糗事百科</h1></a>
+    </div>
+</div>

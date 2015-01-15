@@ -13,6 +13,7 @@
 //        email:ahwangshu@qq.com
 //        http://qsbk.ahwangshu.com
 //
+//         该数据连接对象已经报废
 //======================================================================
 var mongodb = require('mongodb');
 var log4js = require('./../app').logger('fileAppenderError');
