@@ -21,11 +21,9 @@ function timer(){}
 timer.value = null;
 
 
-timer.open = function(fun){
+timer.open = function(callback){
     if(!timer.value){
-        timer.value = schedule.scheduleJob('*/1 * * * *', function(){
-           fun();
-        });
+        timer.value = schedule.scheduleJob('*/1 * * * *', callback);
     }
 }
 
@@ -33,6 +31,22 @@ timer.close = function(){
     if(timer.value){
         timer.value.cancel();
         timer.value = null;
+    }
+}
+
+timer.isOpen = function(){
+    if(timer.value){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+timer.isClose = function(){
+    if(timer.value){
+        return false;
+    }else{
+        return true;
     }
 }
 

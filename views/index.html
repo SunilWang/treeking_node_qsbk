@@ -3,9 +3,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>糗事百科</title>
+    <title>糗事百科 - 快乐，你就不孤单</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css"/>
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
+    <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
 </head>
 
 <body class="logBg2">
@@ -25,6 +26,11 @@
             <%}%>
             <span><%=storyInfo.author.nickName%></span>
         </a>
+        <% if (typeof(userInfo) !== 'undefined') {%>
+            <%if(userInfo.isAdmin){%>
+                <a href="/admin/indexUpdateVerify?storyInfoId=<%=storyInfo._id%>&approve=1" style="float: right;color: red; ">违规</a>
+            <%}%>
+        <%}%>
 
     </div>
 
@@ -36,32 +42,23 @@
     </div>
 
     <div class="QSpart">
-        <span><i><%=storyInfo.positiveFeedbackNum%></i>好笑</span><a href="/storyInfo/<%=storyInfo._id%>" ><i><%=storyInfo.replyNum%></i>回复</a>
+        <span><i class="QSpartI"><%=storyInfo.positiveFeedbackNum%></i>好笑</span><a href="/storyInfo/<%=storyInfo._id%>" ><i><%=storyInfo.replyNum%></i>回复</a>
     </div>
     <div class="QSpart2">
-        <span class="QSbq QSbq1" title="<%=storyInfo.positiveFeedbackNum%>个拍"></span><span class="QSbq QSbq2" title="-<%=storyInfo.negativeFeedbackNum%>个拍"></span><a href="/storyInfo/<%=storyInfo._id%>" class="QSpl" ></a>
+
+        <% if (typeof(userInfo) !== 'undefined') {%>
+            <span class="QSbq <%if(storyInfo.positiveId.indexOf(userInfo._id)=== -1){%>QSbq1<%}else{%>QSbq1b<%}%>" storyId="<%=storyInfo._id%>" title="<%=storyInfo.positiveFeedbackNum%>个拍"></span>
+            <span class="QSbq <%if(storyInfo.negative.indexOf(userInfo._id)=== -1){%>QSbq2<%}else{%>QSbq2b<%}%>" title="<%=storyInfo.negativeFeedbackNum%>个踩" storyId="<%=storyInfo._id%>"></span>
+        <%}else{%>
+            <span class="QSbq QSbq1" storyId="<%=storyInfo._id%>" title="<%=storyInfo.positiveFeedbackNum%>个拍"></span>
+            <span class="QSbq QSbq2" title="<%=storyInfo.negativeFeedbackNum%>个踩" storyId="<%=storyInfo._id%>"></span>
+        <%}%>
+
+
+        <a href="/storyInfo/<%=storyInfo._id%>" class="QSpl" ></a>
     </div>
 </div>
 <%});%>
-
-<!--<div class="QSBox">
-    <div class="QSBox-name">
-        <a href="#"><img src="/images/new-tx.png" width="40" height="40" /><span>心随事迁</span></a>
-    </div>
-
-    <div class="perQS-txt">
-        <p>世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！</p>
-
-        <p><a href="#" target="_blank"><img src="/images/img.jpg" width="220" height="261" /></a></p>
-    </div>
-
-    <div class="QSpart">
-        <span><i>243</i>好笑</span><a href="#"><i>324324</i>回复</a>
-    </div>
-    <div class="QSpart2">
-        <span class="QSbq QSbq1b"></span><span class="QSbq QSbq2b"></span><a href="#" class="QSpl"></a>
-    </div>
-</div>-->
 
 <div class="QSmenu clear wrap">
     <% var base_url = base + (base.indexOf('?') < 0 ? '?' : '&') + 'page='; %>
@@ -105,6 +102,71 @@
 <% include /tags/footer %>
 
 <script>
+
+    /*-----------------------------------------------------*/
+    var QSbq1 = $('.QSbq1');
+    var QSbq2 = $('.QSbq2');
+    <% if (typeof(userInfo) !== 'undefined') {%>
+    QSbq1.on('click',function(){
+        var i = $(this).closest('.QSBox').find('.QSpartI'); //上面的顶
+        var storyId = $(this).attr('storyId');
+        var This = this;
+        $.ajax({
+            type:"POST",
+            url:"/storyInfo/getStoryInfoAddPositiveFeedbackCount",
+            data:{'storyId':storyId},
+            success:function(jsons) {
+                if(jsons.success){
+                    $(This).removeClass('QSbq1').addClass('QSbq1b');
+                    i.html(jsons.positiveFeedbackNum);
+                    $(This).attr('title',jsons.positiveFeedbackNum +'个拍');
+                }else{
+                    alert(jsons.message);
+                }
+
+            },
+            error:function(jsons){
+                alert('数据加载失败,请重试..');
+            }
+        });
+        $(this).unbind();
+    });
+
+    QSbq2.on('click',function(){
+        var storyId = $(this).attr('storyId');
+        var This = this;
+        $.ajax({
+            type:"POST",
+            url:"/storyInfo/getStoryInfoAddNegativeFeedbackCount",
+            data:{'storyId':storyId},
+            success:function(jsons) {
+                if(jsons.success){
+                    $(This).removeClass('QSbq2').addClass('QSbq2b');
+                    $(This).attr('title',jsons.negativeFeedbackNum +'个踩');
+                }else{
+                    alert(jsons.message);
+                }
+
+            },
+            error:function(jsons){
+                alert('数据加载失败,请重试..');
+            }
+        });
+        $(this).unbind();
+    });
+    <%}else{%>
+
+        QSbq1.on('click',function(){
+            alert('您还没有登陆，请登陆后操作！');
+        });
+
+        QSbq2.on('click',function(){
+            alert('您还没有登陆，请登陆后操作！');
+        });
+    <%}%>
+
+    /*-----------------------------------------------------*/
+
     var aLi = document.getElementById('navList').children;
 
     for(var i=0; i<aLi.length; i++){

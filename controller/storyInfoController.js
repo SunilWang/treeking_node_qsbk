@@ -31,7 +31,7 @@ router.get('/remove/:userid/:id',authFiter.authorize, function(req, res) {
     });
 });
 
-
+//查询一条糗事，并且包含所有评论
 router.get('/:id', function(req, res) {
     var id = req.params.id;
     storyInfoService.getFullStoryInfo(id,function(err,storyInfo,author,commentInfos){
@@ -41,6 +41,8 @@ router.get('/:id', function(req, res) {
     });
 });
 
+
+//添加评论
 router.post('/addCommentInfo',authFiter.authorize,function(req,res){
     var storyId = req.body.storyId;
     var content = req.body.content;
@@ -54,10 +56,76 @@ router.post('/addCommentInfo',authFiter.authorize,function(req,res){
             });
         });
     });
+});
 
+//点击糗事赞
+router.post('/getStoryInfoAddPositiveFeedbackCount',authFiter.authorize,function(req,res){
+    var storyId = req.body.storyId;
+    var userId = req.session.userInfo._id;
+    storyInfoService.getStoryInfoById(storyId,function(err,storyInfo,author){
+        storyInfo.positiveId = storyInfo.positiveId || [];
+        var upIndex = storyInfo.positiveId.indexOf(userId);
+        if (storyInfo.authId.equals(userId)) {
+            // 不能帮自己点赞
+            res.send({
+                success: false,
+                message: '呵呵，不能帮自己点赞。'
+            });
+            return;
+        }else if(upIndex === -1) {
+            storyInfo.positiveId.push(userId);
+        }else if(upIndex >= 0){
+            res.send({
+                success: false,
+                message: '呵呵，您已经赞过啦。'
+            });
+            return ;
+        }
+        storyInfo.positiveFeedbackNum = storyInfo.positiveFeedbackNum + 1;
+        storyInfo.save(function(err,storyInfo){
+            res.send({
+                success: true,
+                message: '',
+                positiveFeedbackNum : storyInfo.positiveFeedbackNum
+            });
+        });
+    });
 });
 
 
+//点击糗事踩
+router.post('/getStoryInfoAddNegativeFeedbackCount',authFiter.authorize,function(req,res){
+    var storyId = req.body.storyId;
+    var userId = req.session.userInfo._id;
+    storyInfoService.getStoryInfoById(storyId,function(err,storyInfo,author){
+        storyInfo.negative = storyInfo.negative || [];
+        var upIndex = storyInfo.negative.indexOf(userId);
+        if (storyInfo.authId.equals(userId)) {
+            // 不能帮自己点踩
+            res.send({
+                success: false,
+                message: '呵呵，不能帮自己点踩。'
+            });
+            return ;
+        }else if(upIndex === -1) {
+            storyInfo.negative.push(userId);
+        }else if(upIndex >= 0){
+            res.send({
+                success: false,
+                message: '呵呵，您已经踩过啦。'
+            });
+            return ;
+        }
+        storyInfo.negativeFeedbackNum = storyInfo.negativeFeedbackNum + 1;
+        storyInfo.save(function(err,storyInfo){
+            res.send({
+                success: true,
+                message: '',
+                negativeFeedbackNum :storyInfo.negativeFeedbackNum
+            });
+        });
+    });
+});
 
 
 module.exports = router;

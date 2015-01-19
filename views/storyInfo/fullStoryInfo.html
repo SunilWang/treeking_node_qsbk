@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>糗事百科</title>
+    <title>糗事百科 - 快乐，你就不孤单</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css" />
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
     <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
@@ -37,17 +37,15 @@
         <span><i><%=pageStoryInfo.positiveFeedbackNum%></i>好笑</span><span><i><a href="javascript:;" style="text-decoration: none" ><%=pageStoryInfo.replyNum%></a></i>回复</span>
     </div>
     <div class="QSpart2">
-        <span class="QSbq QSbq1"></span><span class="QSbq QSbq2"></span>
+        <% if (typeof(userInfo) !== 'undefined') {%>
+        <span class="QSbq <%if(pageStoryInfo.positiveId.indexOf(userInfo._id)=== -1){%>QSbq1<%}else{%>QSbq1b<%}%>" storyId="<%=pageStoryInfo._id%>" title="<%=pageStoryInfo.positiveFeedbackNum%>个拍"></span>
+        <span class="QSbq <%if(pageStoryInfo.negative.indexOf(userInfo._id)=== -1){%>QSbq2<%}else{%>QSbq2b<%}%>" title="<%=pageStoryInfo.negativeFeedbackNum%>个踩" storyId="<%=pageStoryInfo._id%>"></span>
+        <%}else{%>
+        <span class="QSbq QSbq1" storyId="<%=pageStoryInfo._id%>" title="<%=pageStoryInfo.positiveFeedbackNum%>个拍"></span>
+        <span class="QSbq QSbq2" title="<%=pageStoryInfo.negativeFeedbackNum%>个踩" storyId="<%=pageStoryInfo._id%>"></span>
+        <%}%>
     </div>
 
-
-    <!--<div class="QSmenu clear">
-        <a href="#" class="QSmenu-next more QSmenu-next1">下一页</a>
-
-        <p>
-            <a href="#" class="QSmenu-pre QSmenu-pre1">&lt;</a>
-        </p>
-    </div>-->
 </div>
 
 <div class="QSdiscuss">
@@ -95,6 +93,71 @@
 <% include ../tags/footer %>
 
 <script>
+
+    /*-----------------------------------------------------*/
+    var QSbq1 = $('.QSbq1');
+    var QSbq2 = $('.QSbq2');
+    <% if (typeof(userInfo) !== 'undefined') {%>
+        QSbq1.on('click',function(){
+            var i = $(this).closest('.QSBox').find('.QSpartI'); //上面的顶
+            var storyId = $(this).attr('storyId');
+            var This = this;
+            $.ajax({
+                type:"POST",
+                url:"/storyInfo/getStoryInfoAddPositiveFeedbackCount",
+                data:{'storyId':storyId},
+                success:function(jsons) {
+                    if(jsons.success){
+                        $(This).removeClass('QSbq1').addClass('QSbq1b');
+                        i.html(jsons.positiveFeedbackNum);
+                        $(This).attr('title',jsons.positiveFeedbackNum +'个拍');
+                    }else{
+                        alert(jsons.message);
+                    }
+
+                },
+                error:function(jsons){
+                    alert('数据加载失败,请重试..');
+                }
+            });
+            $(this).unbind();
+        });
+
+        QSbq2.on('click',function(){
+            var storyId = $(this).attr('storyId');
+            var This = this;
+            $.ajax({
+                type:"POST",
+                url:"/storyInfo/getStoryInfoAddNegativeFeedbackCount",
+                data:{'storyId':storyId},
+                success:function(jsons) {
+                    if(jsons.success){
+                        $(This).removeClass('QSbq2').addClass('QSbq2b');
+                        $(This).attr('title',jsons.negativeFeedbackNum +'个踩');
+                    }else{
+                        alert(jsons.message);
+                    }
+
+                },
+                error:function(jsons){
+                    alert('数据加载失败,请重试..');
+                }
+            });
+            $(this).unbind();
+        });
+    <%}else{%>
+
+        QSbq1.on('click',function(){
+            alert('您还没有登陆，请登陆后操作！');
+        });
+
+        QSbq2.on('click',function(){
+            alert('您还没有登陆，请登陆后操作！');
+        });
+    <%}%>
+
+    /*-----------------------------------------------------*/
+
 
     function addCommentInfo(){
         var commentInfo = $('#commentInfo').val();

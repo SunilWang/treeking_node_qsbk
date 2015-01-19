@@ -23,6 +23,8 @@ var customServerError = config.customServerError;
 var userInfoService = require('../service/userInfoService');
 var storyInfoService = require('../service/storyInfoService');
 var util = require('util');
+var timer = require('../util/timer');
+var log4js = require('./../app').logger();
 
 //管理员用户列表
 router.get('/account',authFiter.adminRequired,function(req,res){
@@ -83,7 +85,7 @@ router.get('/verify',authFiter.adminRequired,function(req,res){
 });
 
 
-//待审核的帖子
+//更改审核帖子
 router.get('/updateVerify',authFiter.adminRequired,function(req,res){
 
     var storyInfoId = req.query.storyInfoId;
@@ -92,6 +94,20 @@ router.get('/updateVerify',authFiter.adminRequired,function(req,res){
         storyInfo.approve = approve;
         storyInfo.save(function(err,storyInfo){
             res.redirect('/admin/verify');
+        });
+    });
+});
+
+
+//首页违规帖子审核不通过
+router.get('/indexUpdateVerify',authFiter.adminRequired,function(req,res){
+
+    var storyInfoId = req.query.storyInfoId;
+    var approve = req.query.approve;
+    storyInfoService.getStoryInfoById(storyInfoId,function(err,storyInfo){
+        storyInfo.approve = approve;
+        storyInfo.save(function(err,storyInfo){
+            res.redirect('/');
         });
     });
 });
@@ -122,6 +138,44 @@ router.post('/updateVerify',authFiter.adminRequired,function(req,res){
             });
         });
     }
+});
+
+
+
+router.get('/kqdsq',authFiter.adminRequired,function(req,res){
+
+    if(timer.isOpen()){
+        return res.send('定时器已经开启，请不要重复开启！');
+    }
+    timer.open(function(){
+        var proxy = new eventproxy();
+        var query = {};
+        query.approve = 0;
+
+        storyInfoService.getStoryInfoByQuery(query,{},function(err,storyInfos){
+            proxy.after('updateStoryInfo', storyInfos.length, function (storyInfos) {
+
+            });
+
+            storyInfos.forEach(function(storyInfo,index){
+                storyInfo.approve = 2;
+                storyInfo.save(proxy.group('updateStoryInfo'));
+            });
+        });
+    });
+    log4js.info('开启定时器！');
+    res.send('成功开启定时器！');
+});
+
+
+router.get('/gbdsq',authFiter.adminRequired,function(req,res){
+
+    if(timer.isClose()){
+        return res.send('定时器已经关闭，请不要重复关闭！');
+    }
+    timer.close();
+    log4js.info('关闭定时器！');
+    res.send('成功关闭定时器！');
 });
 
 

@@ -38,7 +38,7 @@ log4js.configure({
             category: 'logFileInfo',
             type: 'file',
             filename: '../logs/fileLog.log',
-            maxLogSize: 3145728,
+            maxLogSize: 10485760,
             backups: 4
         },
         {
@@ -172,7 +172,7 @@ app.use('/admin', admin);
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
-    log4js.getLogger('logFileInfo').warn('ip: ' + requestProcessing.getClientIP(req) + ' - 访问页: '+req.path);
+    log4js.getLogger('logFileInfo').warn('ip：' + requestProcessing.getClientIP(req) + '访问页：'+req.headers.host + req.path);
     log4js.getLogger('logFileInfo').warn(err.stack);
     res.render('404', {
         url: config.websiteInfo.indexUrl,
