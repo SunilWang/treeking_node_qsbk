@@ -47,6 +47,17 @@ for(var o in oob){
 }
 console.log(oob);
 */
+/*
 var arr =['abc','def','ghi','jkl'];
 
 console.log(arr.indexOf('ef'));
+*/
+
+/*
+var now = new Date();
+var hot = new Date(new Date(new Date()-24*60*60*1000*1));
+//hot = hot.setDate(hot.getDate() -1);
+console.log(hot);*/
+
+var str = '../public/images/uploadImages/99dca5509e6411e4ad30b36fa131acbb1421511564325.jpg'
+console.log(str.lastIndexOf('c/'));

@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>糗事百科</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css" />
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+    <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/validator.min.js"></script>
+</head>
+
+<body class="logBg2">
+<% include ../tags/loginIndexBlock %>
+
+<% include ../tags/list %>
+
+<div class="QSBox">
+    <div class="QSBox-name">
+        <a href="/users/<%=pageStoryInfo.author._id%>">
+            <% if(pageStoryInfo.author.headImage){%>
+                <img src="<%=pageStoryInfo.author.headImage%>" width="40" height="40" />
+            <%}else{%>
+                <img src="/images/touxiang.jpg" width="40" height="40" />
+            <%}%>
+            <span><%=pageStoryInfo.author.nickName%></span>
+        </a>
+    </div>
+
+    <div class="perQS-txt">
+        <p><%=pageStoryInfo.content%></p>
+        <%if(pageStoryInfo.image) {%>
+            <p><a href="javascript:;"><img src="<%=pageStoryInfo.image%>" width="220" height="261" /></a></p>
+        <%}%>
+    </div>
+
+    <div class="QSpart">
+        <span><i><%=pageStoryInfo.positiveFeedbackNum%></i>好笑</span><span><i><a href="javascript:;" style="text-decoration: none" ><%=pageStoryInfo.replyNum%></a></i>回复</span>
+    </div>
+    <div class="QSpart2">
+        <span class="QSbq QSbq1"></span><span class="QSbq QSbq2"></span>
+    </div>
+
+
+    <!--<div class="QSmenu clear">
+        <a href="#" class="QSmenu-next more QSmenu-next1">下一页</a>
+
+        <p>
+            <a href="#" class="QSmenu-pre QSmenu-pre1">&lt;</a>
+        </p>
+    </div>-->
+</div>
+
+<div class="QSdiscuss">
+    <h2>评论（<span><%=pageStoryInfo.commentInfos.length%></span>）</h2>
+
+    <%  pageStoryInfo.commentInfos.forEach(function(commentInfo,index){%>
+
+    <dl>
+        <dt>
+            <a href="/users/<%=commentInfo.author._id%>">
+                <% if(commentInfo.author.headImage){%>
+                    <img src="<%=commentInfo.author.headImage%>" width="40" height="40" />
+                <%}else{%>
+                    <img src="/images/touxiang.jpg" width="40" height="40" />
+                <%}%>
+            </a>
+        </dt>
+        <dd class="QSdisName"><a href="/users/<%=commentInfo.author._id%>"><span><%=commentInfo.author.nickName%></span></a></dd>
+        <dd class="QSdistxt"><%=commentInfo.content%></dd>
+        <dd class="QSdisNum"><%=index+1%></dd>
+    </dl>
+
+    <%});%>
+</div>
+
+
+<% if (typeof(userInfo) !== 'undefined') { %>
+    <form action="/storyInfo/addCommentInfo" method="post" id="commentInfoFrom">
+        <div class="wrap QSlogDiscuss" id="wordCount">
+            <span>
+                <input type="text"  name="content" id="commentInfo" class="QSlogdis-txt" placeholder="我有话说"/><i>140字</i>
+            </span>
+            <input type="hidden" value="<%=pageStoryInfo._id%>" name="storyId">
+            <a href="javascript:;" onclick="addCommentInfo()">评论</a>
+        </div>
+    </form>
+<%}else{%>
+    <div class="wrap QSlogDiscuss">
+        <a href="/users/toLogin">登陆</a>后才能评论
+    </div>
+<%}%>
+
+
+
+<% include ../tags/footer %>
+
+<script>
+
+    function addCommentInfo(){
+        var commentInfo = $('#commentInfo').val();
+        commentInfo = validator.trim(commentInfo);
+        if(commentInfo.length != 0 && commentInfo.length <= 140){
+            $("#commentInfoFrom").submit();
+        }
+    }
+
+
+    var aLi = document.getElementById('navList').children;
+
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onmouseover = function(){
+            var oDiv = this.children[1];
+
+            if(!!oDiv)oDiv.style.display = 'block';
+        };
+
+        aLi[i].onmouseout = function(){
+            var oDiv = this.children[1];
+
+            if(!!oDiv)oDiv.style.display = 'none'
+        };
+    }
+
+    //字数统计
+    var word = document.getElementById('wordCount');
+    var oI = word.getElementsByTagName('i')[0];
+    var oTxt = word.getElementsByTagName('input')[0];
+
+    var timer = null;
+
+    oTxt.onfocus = function(){
+        timer = setInterval(function(){
+            oI.innerHTML = 140-oTxt.value.length+'字';
+        },30);
+    };
+
+    oTxt.onblur = function(){
+        clearInterval(timer);
+    };
+</script>
+</body>
+</html>
+

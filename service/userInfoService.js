@@ -33,6 +33,10 @@ exports.getUserById = function (id, callback) {
     UserInfo.findOne({_id: id}, callback);
 };
 
+exports.getUserAll = function (query, callback) {
+    UserInfo.find(query, callback);
+};
+
 exports.newAndUserInfo = function (userName,passwd,nickName,sex,safeEmail,isAdmin, callback) {
     var userInfo = new UserInfo();
     userInfo.userName = userName;

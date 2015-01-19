@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>投稿</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css"/>
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
     <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
@@ -12,35 +12,7 @@
 <body class="logBg2">
 <% include ../tags/loginIndexBlock %>
 
-<div id="nav">
-    <div class="wrap clearfix">
-        <% if (typeof(userInfo) !== 'undefined') { %>
-            <% if(userInfo.isAdmin){ %>
-                <a href="#" class="more">管理员入口</a>
-            <%}%>
-        <%}%>
-
-        <ul class="clearfix" id="navList">
-            <li><a href="#" class="on">热门</a></li>
-            <li><a href="#" class="on nav-ico">精华</a>
-                <div class="nav-list">
-                    <a href="#">24小时内</a>
-                    <a href="#">7天内</a>
-                    <a href="#">30天内</a>
-                </div>
-            </li>
-            <li><a href="#">最新</a></li>
-            <li><a href="#" class="nav-ico">故事</a>
-                <div class="nav-list">
-                    <a href="#">故事</a>
-                    <a href="#">事故</a>
-                </div>
-            </li>
-            <li><a href="#">反思</a></li>
-            <li><a href="#">投稿</a></li>
-        </ul>
-    </div>
-</div>
+<% include ../tags/list %>
 
 <div class="QSBox deliver">
     <div class="deliver-l fl">
@@ -65,11 +37,7 @@
     </div>
 </div>
 
-<div class="bottom">
-    <p>北京天元特通科技有限公司</p>
-    <p>Copy@2013-2015 fangweisuyuan.All right reserved.京ICP备324235251号-2</p>
-</div>
-
+<% include ../tags/footer %>
 <script>
 
     function checkFormat(filePath) {

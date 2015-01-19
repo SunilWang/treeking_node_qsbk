@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title><%=pageUserInfo.nickName%>-发表的文章</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
+</head>
+
+<body class="logBg">
+<% include ../tags/loginHeader %>
+
+<div class="wrap clearfix setWrap">
+    <div class="set-l fl boxBor">
+        <% if(pageUserInfo.headImage){ %>
+            <img src="<%=pageUserInfo.headImage%>" width="95" height="95" class="set-touxiang"/>
+        <%}else{%>
+            <img src="/images/touxiang.jpg" width="95" height="95" class="set-touxiang"/>
+        <%}%>
+        <p class="set-touxiang-name"><%=pageUserInfo.nickName%></p>
+        <% if(pageUserInfo.signature) {%>
+        <p class="set-qianming"><%=pageUserInfo.signature%></p>
+        <%}else{%>
+        <p class="set-qianming" style="font-style:italic">这家伙很懒，什么个性签名都没有留下。</p>
+        <%}%>
+        <div class="set-ico">
+            <span class="set-level">
+                <% if(pageUserInfo.level === '码农'){ %>
+                    <em>码农</em><i>2</i>
+                <%}else if(pageUserInfo.level === '程序员'){%>
+                    <em>码农</em><i>3</i>
+                <%}else if(pageUserInfo.level === '架构师'){%>
+                    <em>架构师</em><i>4</i>
+                <%}else if(pageUserInfo.level === '院士'){%>
+                    <em>院士</em><i>5</i>
+                <%}else if(pageUserInfo.level === '科学家'){%>
+                    <em>科学家</em><i>6</i>
+                <%}else if(pageUserInfo.level === '图灵'){%>
+                    <em>图灵</em><i>6</i>
+                <%}else{%>
+                    <em>菜鸟</em><i>1</i>
+                <%}%>
+            </span>
+
+            <% if(pageUserInfo.sex === '程序猿'){%>
+            <span class="set-sex set-sex1">程序猿</span>
+            <%}else if(pageUserInfo.sex === '程序媛'){%>
+            <span class="set-sex set-sex3">程序媛</span>
+            <%}else{%>
+            <span class="set-sex set-sex2">程序员</span>
+            <%}%>
+        </div>
+    </div>
+    <div class="set-r fr">
+        <ul class="qiushiList clearfix">
+            <li><a href="/users/<%=pageUserInfo._id%>"  <%if(baseIndex === 1){%> class="on"<%}%>>糗事</a></li>
+            <% if (typeof(userInfo) !== 'undefined') {%>
+                <%if(pageUserInfo._id.equals(userInfo._id)){%>
+                    <li class="qiushi-list2"><a href="/users/all/<%=pageUserInfo._id%>" <%if(baseIndex === 2){%> class="on"<%}%>>全部糗事</a></li>
+                <%}%>
+            <%}%>
+            <li><a href="javascript:;">评论</a></li>
+        </ul>
+        <%storyInfos.forEach(function(storyInfo){%>
+            <div class="perQSBox">
+                <div class="perQS-txt">
+                    <p><%=storyInfo.content%></p>
+                    <%if(storyInfo.image) {%>
+                        <p><a href="#" target="_blank"><img src="<%=storyInfo.image%>" width="220" height="261" /></a></p>
+                    <%}%>
+                </div>
+                <div class="perQS-option clearfix">
+                    <%if(baseIndex === 2){%>
+                        <ul class="more clear">
+                            <%if(storyInfo.approve == 0 ){%>
+                                <li><span class="perQS-status perQS-status3"></span></li>
+                            <%}else if(storyInfo.approve == 1){%>
+                                <li><span class="perQS-status perQS-status2"></span></li>
+                            <%}else if(storyInfo.approve == 2){%>
+                                <li><span class="perQS-status perQS-status1"></span></li>
+                            <%}%>
+                            <li><a href="/storyInfo/remove/<%=pageUserInfo._id%>/<%=storyInfo._id%>" class="perQS-del"></a></li>
+                        </ul>
+                    <%}%>
+                    <span class="perQS-up"><i><%=storyInfo.positiveFeedbackNum%></i>个顶</span>
+                    <span class="perQS-discuss"><i><%=storyInfo.replyNum%></i><a href="/storyInfo/<%=storyInfo._id%>">个评论</a></span>
+                </div>
+            </div>
+        <%});%>
+    </div>
+</div>
+
+
+<% include ../tags/paging %>
+<% include ../tags/footer %>
+</body>
+</html>
+

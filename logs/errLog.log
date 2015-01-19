@@ -1,0 +1,11 @@
+[2015-01-18 22:14:26.024] [ERROR] fileAppenderError - ReferenceError: requestProcessing is not defined
+    at app.use.res.render.message (d:\node\treeking_node_qsbk\app.js:173:50)
+    at Layer.handle [as handle_request] (d:\node\treeking_node_qsbk\node_modules\express\lib\router\layer.js:82:5)
+    at trim_prefix (d:\node\treeking_node_qsbk\node_modules\express\lib\router\index.js:271:13)
+    at d:\node\treeking_node_qsbk\node_modules\express\lib\router\index.js:238:9
+    at Function.proto.process_params (d:\node\treeking_node_qsbk\node_modules\express\lib\router\index.js:313:12)
+    at d:\node\treeking_node_qsbk\node_modules\express\lib\router\index.js:229:12
+    at Function.match_layer (d:\node\treeking_node_qsbk\node_modules\express\lib\router\index.js:296:3)
+    at next (d:\node\treeking_node_qsbk\node_modules\express\lib\router\index.js:190:10)
+    at d:\node\treeking_node_qsbk\node_modules\express\lib\router\index.js:192:16
+    at Function.match_layer (d:\node\treeking_node_qsbk\node_modules\express\lib\router\index.js:296:3)

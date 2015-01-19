@@ -3,7 +3,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>糗事百科</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css"/>
     <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
 </head>
@@ -11,53 +11,40 @@
 <body class="logBg2">
 <% include /tags/loginIndexBlock %>
 
-<div id="nav">
-    <div class="wrap clearfix">
-        <% if (typeof(userInfo) !== 'undefined') { %>
-            <% if(userInfo.isAdmin){ %>
-              <a href="#" class="more">管理员入口</a>
-            <%}%>
-        <%}%>
-        <ul class="clearfix" id="navList">
-            <li><a href="#" class="on">热门</a></li>
-            <li><a href="#" class="on nav-ico">精华</a>
-                <div class="nav-list">
-                    <a href="#">24小时内</a>
-                    <a href="#">7天内</a>
-                    <a href="#">30天内</a>
-                </div>
-            </li>
-            <li><a href="#">最新</a></li>
-            <li><a href="#" class="nav-ico">故事</a>
-                <div class="nav-list">
-                    <a href="#">故事</a>
-                    <a href="#">事故</a>
-                </div>
-            </li>
-            <li><a href="/累了不写代码了，休息会儿~ 哈哈，就是想让你们看看404页面！">穿越</a></li>
-            <li><a href="/add">投稿</a></li>
-        </ul>
-    </div>
-</div>
+<% include /tags/list %>
 
+
+<%storyInfos.forEach(function(storyInfo){%>
 <div class="QSBox">
     <div class="QSBox-name">
-        <a href="#"><img src="/images/new-tx.png" width="40" height="40" /><span>心随事迁</span></a>
+        <a href="/users/<%=storyInfo.author._id%>">
+            <% if(storyInfo.author.headImage){%>
+                <img src="<%=storyInfo.author.headImage%>" width="40" height="40" />
+            <%}else{%>
+                <img src="/images/touxiang.jpg" width="40" height="40" />
+            <%}%>
+            <span><%=storyInfo.author.nickName%></span>
+        </a>
+
     </div>
 
     <div class="perQS-txt">
-        <p>世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！世界上最遥远的距离不是生与死，而是你亲手制造的BUG就在你眼前，而你却怎么也找不到她！</p>
+        <p><%=storyInfo.content%></p>
+        <%if(storyInfo.image) {%>
+            <p><a href="javascript:;"><img src="<%=storyInfo.image%>" width="220" height="261" /></a></p>
+        <%}%>
     </div>
 
     <div class="QSpart">
-        <span><i>243</i>好笑</span><a href="#"><i>324324</i>回复</a>
+        <span><i><%=storyInfo.positiveFeedbackNum%></i>好笑</span><a href="/storyInfo/<%=storyInfo._id%>" ><i><%=storyInfo.replyNum%></i>回复</a>
     </div>
     <div class="QSpart2">
-        <span class="QSbq QSbq1"></span><span class="QSbq QSbq2"></span><a href="#" class="QSpl"></a>
+        <span class="QSbq QSbq1" title="<%=storyInfo.positiveFeedbackNum%>个拍"></span><span class="QSbq QSbq2" title="-<%=storyInfo.negativeFeedbackNum%>个拍"></span><a href="/storyInfo/<%=storyInfo._id%>" class="QSpl" ></a>
     </div>
 </div>
+<%});%>
 
-<div class="QSBox">
+<!--<div class="QSBox">
     <div class="QSBox-name">
         <a href="#"><img src="/images/new-tx.png" width="40" height="40" /><span>心随事迁</span></a>
     </div>
@@ -74,19 +61,44 @@
     <div class="QSpart2">
         <span class="QSbq QSbq1b"></span><span class="QSbq QSbq2b"></span><a href="#" class="QSpl"></a>
     </div>
-</div>
+</div>-->
 
 <div class="QSmenu clear wrap">
-    <a href="#" class="QSmenu-next more QSmenu-next2">下一页</a>
+    <% var base_url = base + (base.indexOf('?') < 0 ? '?' : '&') + 'page='; %>
+
+    <% if (current_page == pages) { %>
+        <a href="javascript:;" class="QSmenu-next more QSmenu-next2" style="text-decoration: none">下一页</a>
+    <% } else { %>
+        <a href="<%= base_url%><%=current_page+1%>" style="text-decoration: none" class="QSmenu-next more">下一页</a>
+    <% } %>
 
     <p>
-        <a href="#" class="QSmenu-pre QSmenu-pre2">&lt;</a>
-        <a href="#" class="QSmenu-num">1</a>
-        <a href="#" class="QSmenu-num">2</a>
-        <a href="#" class="QSmenu-num">3</a>
-        <a href="#" class="QSmenu-num">4</a>
+    <% if (current_page == 1) { %>
+        <a href="javascript:;" style="text-decoration: none" class="QSmenu-pre QSmenu-pre2">&lt;</a>
+    <% } else { %>
+        <a href="<%= base_url %><%=current_page-1%>" style="text-decoration: none" class="QSmenu-pre">&lt;</a>
+    <% } %>
+    <%
+        var page_start = current_page - 4 > 0 ? current_page - 2 : 1;
+        var page_end = page_start + 4 >= pages ? pages : page_start + 4;
+    %>
+    <% if (page_start > 1) { %>
+        <a href="<%= base_url %>1" style="text-decoration: none" class="QSmenu-num">1</a>
         <span>...</span>
-        <a href="#" class="QSmenu-num">35</a>
+    <% } %>
+
+    <% for(var i = page_start; i <= page_end; i++) { %>
+        <% if (i === current_page) { %>
+            <a href="javascript:;" class="QSmenu-num current" style="text-decoration: none"><%= i %></a>
+        <% } else { %>
+            <a class="QSmenu-num" style="text-decoration: none" href='<%= base_url + i %>'><%= i %></a>
+        <% } %>
+    <% } %>
+
+    <% if (page_end < pages ) { %>
+        <span>...</span>
+        <a href="<%= base_url + pages%>" style="text-decoration: none" class="QSmenu-num"><%=pages%></a>
+    <% } %>
     </p>
 </div>
 

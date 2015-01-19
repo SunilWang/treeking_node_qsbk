@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>管理用户</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
+    <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/validator.min.js"></script>
+</head>
+
+<body class="logBg2">
+<% include ../tags/loginIndexBlock %>
+
+<% include ../tags/list %>
+
+<div class="wrap clearfix setWrap">
+    <div class="set-l fl boxBor">
+        <% if(userInfo.headImage){ %>
+            <img src="<%=userInfo.headImage%>" width="95" height="95" class="set-touxiang"/>
+        <%}else{%>
+            <img src="/images/touxiang.jpg" width="95" height="95" class="set-touxiang"/>
+        <%}%>
+        <p class="set-touxiang-name"><%=userInfo.nickName%></p>
+
+        <ul class="set-l-list">
+            <li class="on"><a href="/admin/account" class="set-l-list-ico">账号管理</a></li>
+            <li><a href="/admin/verify" class="set-l-list-ico2">投稿审批管理</a></li>
+        </ul>
+    </div>
+    <div class="set-r fr">
+        <form action="/admin/account" method="get">
+            <div class="perQSBox">
+                <div class="perQS-option clearfix perQS-mag">
+                    <label>昵称：</label><input type="text" value="<%=nickName%>" name="nickName" class="perQS-mag-txt"/><input type="submit" value="" class="perQS-mag-btn"/>
+                </div>
+            </div>
+        </form>
+        <div class="QStableBox">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0" class="QStable">
+                <colgroup>
+                    <col width="12%" />
+                    <col width="16%" />
+                    <col width="26%" />
+                    <col width="32%" />
+                    <col width="14%" />
+                </colgroup>
+                <thead>
+                <tr>
+                    <th>序号</th>
+                    <th>昵称</th>
+                    <th>用户名</th>
+                    <th>绑定邮箱</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <%pageUserInfos.forEach(function(pageUserInfo,index){%>
+                    <tr>
+                        <td><%=index+1%></td>
+                        <td><%=pageUserInfo.nickName%></td>
+                        <td><%=pageUserInfo.userName%></td>
+                        <td><%=pageUserInfo.safeEmail%></td>
+                        <td>
+                            <%if(pageUserInfo.isDisable){%>
+                                <a href="/admin/updateDisable?userId=<%=pageUserInfo._id%>&disable=false" class="QStable-a">解冻</a>
+                            <%}else{%>
+                                <a href="/admin/updateDisable?userId=<%=pageUserInfo._id%>&disable=true" class="QStable-a QStable-jd">冻结</a>
+                            <%}%>
+                        </td>
+                    </tr>
+                <% });%>
+                </tbody>
+            </table>
+        </div>
+
+        <!--<div class="QSmenu clear">
+            <a href="#" class="QSmenu-next more QSmenu-next2">下一页</a>
+
+            <p>
+                <a href="#" class="QSmenu-pre QSmenu-pre2">&lt;</a>
+                <a href="#" class="QSmenu-num">1</a>
+                <a href="#" class="QSmenu-num">2</a>
+                <a href="#" class="QSmenu-num">3</a>
+                <a href="#" class="QSmenu-num">4</a>
+                <span>...</span>
+                <a href="#" class="QSmenu-num">35</a>
+            </p>
+        </div>-->
+    </div>
+</div>
+
+<% include ../tags/footer %>
+
+<script>
+    var aLi = document.getElementById('navList').children;
+
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onmouseover = function(){
+            var oDiv = this.children[1];
+
+            if(!!oDiv)oDiv.style.display = 'block';
+        };
+
+        aLi[i].onmouseout = function(){
+            var oDiv = this.children[1];
+
+            if(!!oDiv)oDiv.style.display = 'none'
+        };
+    }
+</script>
+</body>
+</html>
+

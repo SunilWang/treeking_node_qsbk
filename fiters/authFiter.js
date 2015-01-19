@@ -35,10 +35,12 @@ exports.authorize=function(req,res,next){
  */
 exports.adminRequired = function (req, res, next) {
     if (!req.session.userInfo) {
-        return res.render('notify/notify', {error: '你还没有登录。'});
+        logger.warn('IP：'+req.ip+',非法登陆管理员后台！');
+        return res.send('你还没有登录。');
     }
     if (!req.session.userInfo.isAdmin) {
-        return res.render('notify/notify', {error: '需要管理员权限。'});
+        logger.warn('IP：'+req.ip+',非法登陆管理员后台！');
+        return res.send('需要管理员权限。');
     }
     next();
 };
@@ -53,16 +55,15 @@ exports.userRequired = function (req, res, next) {
     next();
 };
 
-exports.blockUser = function () {
-    return function (req, res, next) {
-        if (req.path === '/users/logOut') {
-            return next();
-        }
-        if (req.session.user && req.session.user.is_block && req.method !== 'GET') {
-            return res.status(403).send('您已被管理员屏蔽了。有疑问请联系 ahwangshu@qq.com。');
-        }
-        next();
-    };
+exports.blockUser = function (req, res, next) {
+    if (req.path === '/users/logOut') {
+        return next();
+    }
+
+    if (req.session.userInfo && req.session.userInfo.isDisable && req.method !== 'GET') {
+        return res.status(403).send('您已被管理员屏蔽了。有疑问请联系 ahwangshu@qq.com。');
+    }
+    next();
 };
 
 function gen_session(user, res) {

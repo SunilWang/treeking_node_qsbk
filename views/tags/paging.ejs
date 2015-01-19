@@ -1,0 +1,38 @@
+<div class="QSmenu clear wrap">
+    <% var base_url = base + (base.indexOf('?') < 0 ? '?' : '&') + 'page='; %>
+
+    <% if (current_page == pages) { %>
+        <a href="javascript:;" class="QSmenu-next more QSmenu-next2" style="text-decoration: none">下一页</a>
+    <% } else { %>
+        <a href="<%= base_url%><%=current_page+1%>" style="text-decoration: none" class="QSmenu-next more">下一页</a>
+    <% } %>
+
+    <p>
+        <% if (current_page == 1) { %>
+            <a href="javascript:;" style="text-decoration: none" class="QSmenu-pre QSmenu-pre2">&lt;</a>
+        <% } else { %>
+            <a href="<%= base_url %><%=current_page-1%>" style="text-decoration: none" class="QSmenu-pre">&lt;</a>
+        <% } %>
+        <%
+            var page_start = current_page - 4 > 0 ? current_page - 2 : 1;
+            var page_end = page_start + 4 >= pages ? pages : page_start + 4;
+        %>
+        <% if (page_start > 1) { %>
+            <a href="<%= base_url %>1" style="text-decoration: none" class="QSmenu-num">1</a>
+            <span>...</span>
+        <% } %>
+
+        <% for(var i = page_start; i <= page_end; i++) { %>
+            <% if (i === current_page) { %>
+                <a href="javascript:;" class="QSmenu-num current" style="text-decoration: none"><%= i %></a>
+            <% } else { %>
+                <a class="QSmenu-num" style="text-decoration: none" href='<%= base_url + i %>'><%= i %></a>
+            <% } %>
+        <% } %>
+
+        <% if (page_end < pages ) { %>
+            <span>...</span>
+            <a href="<%= base_url + pages%>" style="text-decoration: none" class="QSmenu-num"><%=pages%></a>
+        <% } %>
+    </p>
+</div>

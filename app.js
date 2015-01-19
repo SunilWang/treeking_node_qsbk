@@ -26,6 +26,7 @@ var multer  = require('multer');
 var log4js = require('log4js');
 var compress = require('compression');
 
+
 //配置log4js
 log4js.configure({
     appenders: [
@@ -97,13 +98,14 @@ app.use(session({
     saveUninitialized: false,
     resave: true
 }));
+var requestProcessing = require('./util/requestProcessing');
 
 app.use(authFiter.authUser);
-
+app.use(authFiter.blockUser);
 
 //上传文件中间件
 app.use(multer({
-    // dest: path.join(__dirname, 'public/images/uploadImages/'),
+    //dest: path.join(__dirname, 'public/images/uploadImages/'),
     dest: config.uploadFile.dir,//上传目标文件夹
     onFileUploadStart: function (file) {
         //判断文件后缀是否合法，如果不合法，文件将不上传，并且req.files对象为{}空对象；
@@ -154,12 +156,15 @@ app.use(function(req, res, next){
 
 var index = require('./controller/indexController');
 var users = require('./controller/usersController');
-//var test = require('./test/testDb');
+var storyInfo = require('./controller/storyInfoController');
+var admin = require('./controller/adminController');
 
 
-//app.use('/', routes);
+
 app.use('/', index);
 app.use('/users', users);
+app.use('/storyInfo', storyInfo);
+app.use('/admin', admin);
 
 
 
@@ -167,6 +172,7 @@ app.use('/users', users);
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
+    log4js.getLogger('logFileInfo').warn('ip: ' + requestProcessing.getClientIP(req) + ' - 访问页: '+req.path);
     log4js.getLogger('logFileInfo').warn(err.stack);
     res.render('404', {
         url: config.websiteInfo.indexUrl,

@@ -25,7 +25,7 @@ var StoryInfoSchema = new Schema({
     authId: { type: ObjectId},//作者id
     submitTime: { type: Date,default: Date.now},//创建时间
     approve: { type: Number, default: 0 },//审批结果：0未经审核，1未通过审核，2通过审核
-    replyNum:{ type: Number, default: 0 },
+    replyNum:{ type: Number, default: 0 }, //回复的次数
     positiveFeedbackNum: { type: Number, default: 0 },//赞的次数
     negativeFeedbackNum: { type: Number, default: 0 },//差评的次数
     positiveId:[Schema.Types.ObjectId],

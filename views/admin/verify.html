@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
+    <script type="text/javascript" src="/javascripts/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="/javascripts/validator.min.js"></script>
+</head>
+
+<body class="logBg2">
+
+<% include ../tags/loginIndexBlock %>
+<% include ../tags/list %>
+
+<div class="wrap clearfix setWrap">
+    <div class="set-l fl boxBor">
+        <% if(userInfo.headImage){ %>
+            <img src="<%=userInfo.headImage%>" width="95" height="95" class="set-touxiang"/>
+        <%}else{%>
+            <img src="/images/touxiang.jpg" width="95" height="95" class="set-touxiang"/>
+        <%}%>
+        <p class="set-touxiang-name"><%=userInfo.nickName%></p>
+
+        <ul class="set-l-list">
+            <li><a href="/admin/account" class="set-l-list-ico">账号管理</a></li>
+            <li class="on"><a href="/admin/verify" class="set-l-list-ico2">投稿审批管理</a></li>
+        </ul>
+    </div>
+    <div class="set-r fr">
+        <div class="QS-verify">
+            <div class="perQSBox">
+                <div class="perQS-option clearfix perQS-ver">
+                    <p class="more"><a href="javascript:;" id="ver-qbtg" class="vera ver-qbtg"></a><a href="javascript:;" id="ver-qbwtg" class="vera ver-qbwtg"></a></p>
+                    <span><input type="checkbox" id="QSChkAll"/>全选</span>
+                </div>
+            </div>
+            <form method="post" action="/admin/updateVerify" id="batchUpdateStoryIdForm">
+                <input type="hidden" id="hiddenApprove" name="approve">
+                <%storyInfos.forEach(function(storyInfo){ %>
+                <div class="QSBox">
+                    <div class="perQS-option clearfix perQS-ver">
+                        <p class="more">
+                            <a href="/admin/updateVerify?storyInfoId=<%=storyInfo._id%>&approve=2" class="vera ver-tg"></a>
+                            <a href="/admin/updateVerify?storyInfoId=<%=storyInfo._id%>&approve=1" class="vera ver-wtg"></a>
+                        </p>
+                        <span><input type="checkbox" value="<%=storyInfo._id%>" name="storyInfoId" class="QSchk"/></span>
+                    </div>
+
+                    <div class="QSBox-name">
+                        <a href="#">
+                            <%if(storyInfo.author.headImage){%>
+                                <img src="<%=storyInfo.author.headImage%>" width="40" height="40" />
+                            <%}else{%>
+                                <img src="/images/touxiang.jpg" width="40" height="40"/>
+                            <%}%>
+
+                            <span><%=storyInfo.author.nickName%></span>
+                        </a>
+                    </div>
+
+                    <div class="perQS-txt">
+                        <p><%=storyInfo.content%></p>
+                        <%if(storyInfo.image) {%>
+                            <p><a href="javascript:;"><img src="<%=storyInfo.image%>" width="220" height="261" /></a></p>
+                        <%}%>
+                    </div>
+                </div>
+                <% });%>
+            </form>
+        </div>
+    </div>
+</div>
+<% include ../tags/paging %>
+<% include ../tags/footer %>
+
+<script>
+
+
+    $('#ver-qbtg').click(function(){
+        $('#hiddenApprove').val(2);
+        $("#batchUpdateStoryIdForm").submit();
+    });
+
+    $('#ver-qbwtg').click(function(){
+        $('#hiddenApprove').val(1);
+        $("#batchUpdateStoryIdForm").submit();
+    });
+
+    var aLi = document.getElementById('navList').children;
+
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onmouseover = function(){
+            var oDiv = this.children[1];
+
+            if(!!oDiv)oDiv.style.display = 'block';
+        };
+
+        aLi[i].onmouseout = function(){
+            var oDiv = this.children[1];
+
+            if(!!oDiv)oDiv.style.display = 'none'
+        };
+    }
+
+    //全选
+    function getByClass(sClass,obj){
+        if(document.getElementsByClassName){
+            return (obj || document).getElementsByClassName(sClass);
+        }else{
+            var aEle = (obj || document).getElementsByTagName('*');
+            var reg = new RegExp('\\b'+sClass+'\\b','i');
+            var r = [];
+
+            for(var i=0,len=aEle.length;i<len;i++){
+                if(reg.test(aEle[i].className)){
+                    r.push(aEle[i]);
+                }
+            }
+
+            return r;
+        }
+    }
+
+    var oAllBtn = document.getElementById('QSChkAll');
+    var QSverify = getByClass('QS-verify')[0];
+
+    oAllBtn.onclick = function(){
+        var aBtn = getByClass('QSchk',QSverify);
+        var tf = this.checked;
+
+        for(var i=0,len=aBtn.length;i<len;i++){
+            aBtn[i].checked = tf;
+        }
+    };
+
+
+</script>
+</body>
+</html>
+

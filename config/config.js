@@ -28,7 +28,7 @@ module.exports = {
     },
     /*应用配置*/
     appConfig:{
-        port:3001//启动端口
+        port:80//启动端口
     },
     //session配置信息
     sessionConfig:{
@@ -41,7 +41,7 @@ module.exports = {
     },
     //文件上传路径
     uploadFile:{
-        dir:'./public/images/uploadImages/'
+        dir:'../public/images/uploadImages/'
     },
     //非法请求消息和堆栈信息的映射名称
     customServerError:{
@@ -55,6 +55,7 @@ module.exports = {
     personalInformation:{
         email:'ahwangshu@qq.com', //联系方式email
         beiAnHao:'皖ICP备14010130号-2'
-    }
+    },
+    list_storyInfo_count:10 //每页显示的个数
 
 };

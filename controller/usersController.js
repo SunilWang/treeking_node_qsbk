@@ -16,6 +16,7 @@ var router = express.Router();
 var authFiter = require('../fiters/authFiter');
 var sexInfoService = require('../service/sexInfoService');
 var userInfoService = require('../service/userInfoService');
+var storyInfoService = require('../service/storyInfoService');
 var encryption = require('../util/encryption');
 var config = require('../config/config');
 var customServerError = config.customServerError;
@@ -23,6 +24,7 @@ var RequestProcessing  = require('../util/requestProcessing');
 var objUtil = require('../util/objUtil');
 var models = require('../models');
 var UserInfo = models.UserInfo;
+var eventproxy = require('eventproxy');
 
 
 //================================注册开始=============
@@ -203,7 +205,7 @@ router.post('/uploadHeadPortrait',authFiter.authorize,function(req,res){
     }
 
     var headImageFilePath = headImageFile.path;
-    headImageFilePath = headImageFilePath.replace('public','').replace(/\\/g,'/');
+    headImageFilePath =headImageFilePath.substring(headImageFilePath.lastIndexOf('public')+6).replace(/\\/g,'/');
     userInfoService.getUserById(_id,function(err,userInfo){
         userInfo.headImage = headImageFilePath;
         userInfo.save(function(err,userInfo){
@@ -213,11 +215,75 @@ router.post('/uploadHeadPortrait',authFiter.authorize,function(req,res){
     });
 })
 
-
 //======================个人信息页面结束================
 
 
+//查看用户糗事页面
+router.get('/:id', function(req, res) {
+    var id = req.params.id;
 
+    var proxy = new eventproxy();
+    var page = parseInt(req.query.page, 10) || 1;
+    page = page > 0 ? page : 1;
+
+    var query = {};
+    query.approve = 2;
+    query.authId = id;
+    var limit = config.list_storyInfo_count;
+    var options = { skip: (page - 1) * limit, limit: limit, sort: '-submitTime'};
+
+    storyInfoService.getStoryInfoByQuery(query,options,proxy.done('storyInfos'));
+    storyInfoService.getCountByQuery(query, proxy.done(function (all_storyInfos_count) {
+        var pages = Math.ceil(all_storyInfos_count / limit);
+        proxy.emit('pages', pages);
+    }));
+    userInfoService.getUserById(id,proxy.done('userInfo'));
+
+    proxy.all('storyInfos','pages','userInfo',function (storyInfos,pages,userInfo) {
+        res.render('userInfo/personalIndex', {
+            storyInfos:storyInfos,
+            pageUserInfo:userInfo,
+            current_page: page,
+            list_topic_count: limit,
+            pages: pages,
+            base:'/users'+req.path,
+            baseIndex:1
+        });
+    });
+});
+
+//查看用户糗事页面
+router.get('/all/:id',authFiter.authorize, function(req, res) {
+    var id = req.params.id;
+
+    var proxy = new eventproxy();
+    var page = parseInt(req.query.page, 10) || 1;
+    page = page > 0 ? page : 1;
+
+    var query = {};
+    query.authId = id;
+    var limit = config.list_storyInfo_count;
+    var options = { skip: (page - 1) * limit, limit: limit, sort: '-submitTime'};
+
+    storyInfoService.getStoryInfoByQuery(query,options,proxy.done('storyInfos'));
+    storyInfoService.getCountByQuery(query, proxy.done(function (all_storyInfos_count) {
+        var pages = Math.ceil(all_storyInfos_count / limit);
+        proxy.emit('pages', pages);
+    }));
+    userInfoService.getUserById(id,proxy.done('userInfo'));
+
+    proxy.all('storyInfos','pages','userInfo',function (storyInfos,pages,userInfo) {
+        res.render('userInfo/personalIndex', {
+            storyInfos:storyInfos,
+            pageUserInfo:userInfo,
+            current_page: page,
+            list_topic_count: limit,
+            pages: pages,
+            base:'/users'+req.path,
+            baseIndex:2
+        });
+    });
+});
 
 
 
