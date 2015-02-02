@@ -150,7 +150,7 @@ app.use(multer({
 app.use(function(req, res, next){
     res.locals.email = config.personalInformation.email;
     res.locals.beiAnHao = config.personalInformation.beiAnHao;
-   // res.locals.userInfo = req.session.userInfo;
+    res.locals.baseIndex = -1;
     next();
 });
 

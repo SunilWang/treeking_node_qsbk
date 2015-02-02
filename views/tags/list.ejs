@@ -1,28 +1,29 @@
 <div id="nav">
     <div class="wrap clearfix">
         <% if (typeof(userInfo) !== 'undefined') { %>
-        <% if(userInfo.isAdmin){ %>
-        <a href="/admin/verify" class="more">管理员入口</a>
+            <% if(userInfo.isAdmin){ %>
+            <a href="/admin/verify" class="more">管理员入口</a>
+            <%}%>
         <%}%>
-        <%}%>
+        <a href="http://lts.ahwangshu.com" class="more">简易聊天室入口</a>
         <ul class="clearfix" id="navList">
-            <li><a href="/" >热门</a></li>
-            <li><a href="/hot" class="nav-ico">精华</a>
+            <li><a href="/" <%if(baseIndex == 1){%> class="on" <%}%> >热门</a></li>
+            <li><a href="/hot" class="nav-ico <%if(baseIndex == 2){%>on <%}%>">精华</a>
                 <div class="nav-list">
                     <a href="/hot">24小时内</a>
                     <a href="/week">7天内</a>
                     <a href="/month">30天内</a>
                 </div>
             </li>
-            <li><a href="/imgrank" class="nav-ico">真相</a>
+            <li><a href="/imgrank" class="nav-ico  <%if(baseIndex == 3){%>on <%}%>" >真相</a>
                 <div class="nav-list">
                     <a href="/imgrank">硬菜</a>
                     <a href="/pic">时令</a>
                 </div>
             </li>
-            <li><a href="/late">最新</a></li>
+            <li><a href="/late" <%if(baseIndex == 4){%> class="on" <%}%>>最新</a></li>
             <li><a href="/天王盖地虎！小鸡炖蘑菇！">穿越</a></li>
-            <li><a href="/add">投稿</a></li>
+            <li><a href="/add" <%if(baseIndex == 5){%> class="on" <%}%>>投稿</a></li>
         </ul>
     </div>
 </div>

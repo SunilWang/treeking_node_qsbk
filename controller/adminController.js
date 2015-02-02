@@ -37,7 +37,8 @@ router.get('/account',authFiter.adminRequired,function(req,res){
     }else{
         nickName = '';
     }
-    userInfoService.getUserAll(query,function(err,userInfos){
+    var options = {sort: '-createTime'};
+    userInfoService.getSortUserAll(query,options,function(err,userInfos){
         res.render('admin/account',{pageUserInfos:userInfos,nickName:nickName});
     });
 });

@@ -28,7 +28,7 @@ module.exports = {
     },
     /*应用配置*/
     appConfig:{
-        port:80//启动端口
+        port:3000//启动端口
     },
     //session配置信息
     sessionConfig:{

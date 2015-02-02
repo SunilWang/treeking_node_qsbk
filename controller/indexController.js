@@ -241,7 +241,7 @@ router.get('/late', function(req, res) {
 });
 
 router.get('/add',authFiter.authorize,function(req,res){
-    res.render('storyInfo/deliver');
+    res.render('storyInfo/deliver',{baseIndex:5});
 });
 
 
